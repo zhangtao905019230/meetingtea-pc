@@ -1,0 +1,13 @@
+{
+  "header.component.home.page": "遇茶首页",
+  "header.component.mobile.version": "遇茶手机端",
+  "header.component.login": "登录",
+  "header.component.register": "注册",
+  "header.component.order": "我的订单",
+  "header.component.help": "帮助中心",
+  "header.component.about": "关于遇茶",
+  "header.component.cart": "购物车",
+  "category.list.all.product.categories": "所有商品分类",
+  "classified.display.cabinet.from": "来自于 {name} 的评论",
+  "classified.display.cabinet.more.link": "查看更多"
+}

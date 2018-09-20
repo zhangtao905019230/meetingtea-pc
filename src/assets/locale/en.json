@@ -1,0 +1,13 @@
+{
+  "header.component.home.page": "Meeting Tea home",
+  "header.component.mobile.version": "Meeting Tea home mobile ver",
+  "header.component.login": "Login",
+  "header.component.register": "Register",
+  "header.component.order": "Order",
+  "header.component.help": "Help",
+  "header.component.about": "About Meeting Tea",
+  "header.component.cart": "Shopping Cart",
+  "category.list.all.product.categories": "All Product Categories",
+  "classified.display.cabinet.from": "from {name} comment",
+  "classified.display.cabinet.more.link": "View More"
+}
