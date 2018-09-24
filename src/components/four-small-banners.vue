@@ -65,13 +65,13 @@
         </div>
       </li>
       <li>
-        <img style="width: 316px" src="https://i1.mifile.cn/a4/xmad_15335514135834_MauPT.jpg" alt="">
+        <img style="width: 316px" src="http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/four-small-banners/small-banner0.jpg" alt="">
       </li>
       <li>
-        <img style="width: 316px" src="https://i1.mifile.cn/a4/xmad_15335514135834_MauPT.jpg" alt="">
+        <img style="width: 316px" src="http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/four-small-banners/small-banner1.jpg" alt="">
       </li>
       <li>
-        <img style="width: 316px" src="https://i1.mifile.cn/a4/xmad_15335514135834_MauPT.jpg" alt="">
+        <img style="width: 316px" src="http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/four-small-banners/small-banner2.jpg" alt="">
       </li>
     </ul>
   </div>

@@ -1,7 +1,8 @@
 <style>
-  .banner-component>.margin{height: 460px;background-color: blueviolet;position: relative}
+  .banner-component>.margin{height: 460px;background-color: blueviolet;position: relative;display: flex}
+  .banner-component>.margin>.bg{width: 234px;height: 460px;background-color: #666}
   .banner-component>.margin .swiper-container {
-    width: 100%;
+    width: 992px;
     height: 100%;
   }
   .banner-component>.margin .swiper-slide {
@@ -24,9 +25,9 @@
     -webkit-align-items: center;
     align-items: center;
   }
-  .banner-component>.margin .swiper-slide:nth-child(1){background-image: url("./../assets/images/banner/banner0.jpg")}
-  .banner-component>.margin .swiper-slide:nth-child(2){background-image: url("./../assets/images/banner/banner1.jpg")}
-  .banner-component>.margin .swiper-slide:nth-child(3){background-image: url("./../assets/images/banner/banner2.jpg")}
+  .banner-component>.margin .swiper-slide:nth-child(1){background-image: url("http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/banner-component/banner0.jpg")}
+  .banner-component>.margin .swiper-slide:nth-child(2){background-image: url("http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/banner-component/banner1.jpg")}
+  .banner-component>.margin .swiper-slide:nth-child(3){background-image: url("http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/banner-component/banner2.jpg")}
   .banner-component>.margin .swiper-pagination{top: 90%;left: 50%}
   .banner-component>.margin .swiper-pagination span{margin: 10px}
   .banner-component>.margin .swiper-button-prev{left: 245px}
@@ -35,6 +36,7 @@
 <template>
   <div class="banner-component">
     <div class="margin">
+      <div class="bg"></div>
       <!-- Swiper -->
       <div class="swiper-container">
         <div class="swiper-wrapper">

@@ -5,17 +5,16 @@
     <category-list></category-list>
     <banner-component></banner-component>
     <four-small-banners></four-small-banners>
-    <classified-display-cabinet
-      :tea-details="testTeaDetails"
-      :comment="comment"
-      :commodityDisplayCabinetPoster="[
-      ':8080/elfinder/files/images/commodityDisplayCabinetPoster/greentea0.jpg',
-      ':8080/elfinder/files/images/commodityDisplayCabinetPoster/greentea1.jpg',
-      ':8080/elfinder/files/images/commodityDisplayCabinetPoster/greentea_banner.jpg'
-      ]"
-    >
-    </classified-display-cabinet>
-
+    <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="01" :tea-details="teaDetails[1]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="02" :tea-details="teaDetails[2]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="03" :tea-details="teaDetails[3]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="04" :tea-details="teaDetails[4]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="05" :tea-details="teaDetails[5]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="06" :tea-details="teaDetails[6]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="07" :tea-details="teaDetails[7]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="08" :tea-details="teaDetails[8]" :comment="comment"></classified-display-cabinet>
+    <classified-display-cabinet tea-largeclass="09" :tea-details="teaDetails[9]" :comment="comment"></classified-display-cabinet>
   </div>
 </template>
 <script>
@@ -39,7 +38,10 @@
     },
     data(){
       return {
-        testTeaDetails:this.init(),
+        teaDetails:[
+          this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),
+          this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails()
+        ],
         comment:Array(8).fill({
           review:"很好",
           author:"张涛"
@@ -47,25 +49,14 @@
       }
     },
     mounted(){
-      this.init()
-      GetGoodsInfor.GetEightHotGoods(this.dataInterface).then(res => {
-        for (let i=0;i<8;i++){
-          this.testTeaDetails[i].zh_title = res[i].zh_title
-          this.testTeaDetails[i].zh_desc = res[i].zh_desc
-          this.testTeaDetails[i].en_title = res[i].en_title
-          this.testTeaDetails[i].en_desc = res[i].en_desc
-          this.testTeaDetails[i].saleoff = res[i].saleoff
-          this.testTeaDetails[i].figure_img = res[i].figure_img
-          this.testTeaDetails[i].price = res[i].price
-          this.testTeaDetails[i].no_discount_price = res[i].no_discount_price
-        }
-      })
+      this.getEightHotGoods()
     },
     methods:{
-      init(){
-        let testTeaDetails = []
+      initTeaDetails(){
+        let teaDetails = []
         for (let i=0;i<8;i++){
-          testTeaDetails.push({
+          teaDetails.push({
+            "classification": "{}",
             "zh_largeclass": "",
             "zh_smallclass":"",
             "zh_title":"",
@@ -80,7 +71,26 @@
             "figure_img":""
           })
         }
-        return testTeaDetails
+        return teaDetails
+      },
+      getEightHotGoods(){
+        GetGoodsInfor.GetEightHotGoods(this.dataInterface).then(res => {
+          console.log(res)
+          let arr = ['00','01','02','03','04','05','06','07','08','09']
+          for (let j=0;j<10;j++){
+            for (let i=0;i<8;i++){
+              this.teaDetails[j][i].classification = res[arr[j]][i].classification
+              this.teaDetails[j][i].zh_title = res[arr[j]][i].zh_title
+              this.teaDetails[j][i].zh_desc = res[arr[j]][i].zh_desc
+              this.teaDetails[j][i].en_title = res[arr[j]][i].en_title
+              this.teaDetails[j][i].en_desc = res[arr[j]][i].en_desc
+              this.teaDetails[j][i].saleoff = res[arr[j]][i].saleoff
+              this.teaDetails[j][i].figure_img = res[arr[j]][i].figure_img
+              this.teaDetails[j][i].price = res[arr[j]][i].price
+              this.teaDetails[j][i].no_discount_price = res[arr[j]][i].no_discount_price
+            }
+          }
+        })
       }
     }
   }

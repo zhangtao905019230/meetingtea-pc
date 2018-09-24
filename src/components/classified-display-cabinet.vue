@@ -1,4 +1,14 @@
 <style>
+  /*"00": "Bohea",*/
+  /*"01": "Green Tea",*/
+  /*"02": "White Tea",*/
+  /*"03": "Black Tea",*/
+  /*"04": "Oolong",*/
+  /*"05": "Scented Tea",*/
+  /*"06": "Yellow Tea",*/
+  /*"07": "Medicinal Tea",*/
+  /*"08": "Tea Set",*/
+  /*"09": "Other",*/
   .classified-display-cabinet{background-color: #f5f5f5}
   .classified-display-cabinet>.margin{overflow: hidden}
   .classified-display-cabinet>.margin>img{width: 1226px;display: block;margin: 42px 0 42px 0;}
@@ -96,10 +106,10 @@
   <div class="classified-display-cabinet">
     <div class="margin">
       <!--box-banner-->
-      <img :src="url+commodityDisplayCabinetPoster[2]" alt="" class="box-banner">
+      <img src="http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/greentea-banner.jpg" alt="" class="box-banner">
       <!--box-hd-->
       <div class="box-hd">
-        <h2 style="line-height: 58px">{{$t("00")}}</h2>
+        <h2 style="line-height: 58px">{{$t(teaLargeclass)}}</h2>
         <p class="more-link">
           <span>{{$t("classified.display.cabinet.more.link")}}</span>
           <i class="icon-more iconfont"></i>
@@ -108,14 +118,14 @@
       <!--box-bd-->
       <div class="box-bd">
         <ul class="box-bd-l">
-          <li :style='{"background-image": "url("+url+commodityDisplayCabinetPoster[0]+")"}'>
+          <li :style='{"background-image": "url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/greentea0.jpg)"}'>
           </li>
-          <li :style='{"background-image": "url("+url+commodityDisplayCabinetPoster[1]+")"}'>
+          <li :style='{"background-image": "url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/greentea1.jpg)"}'>
           </li>
         </ul>
         <ul class="box-bd-r">
           <li v-for="(teaDetail,index) of teaDetailsHandle" style="overflow: hidden">
-            <div class="saleoff">{{teaDetail.saleoff}}</div>
+            <div class="saleoff" :style='{"background-color": teaDetail.saleoffBgc}'>{{teaDetail.saleoff}}</div>
             <div
               class="figure"
               :style='{
@@ -148,19 +158,22 @@
   export default {
     data(){
       return {
-        url:this.dataInterface
+        url:this.dataInterface,
+        // teaLargeclass: JSON.parse(this.teaDetails[0].classification).largeclass
       }
     },
-    props:["teaDetails","comment","commodityDisplayCabinetPoster"],
+    props:["teaLargeclass","teaDetails","comment"],
     computed:{
       teaDetailsHandle(){
         if (this.langCode == "zh"){
           let teaDetailsHandleArr = []
           for(let i=0;i<this.teaDetails.length;i++){
             teaDetailsHandleArr.push({
+              "classification": JSON.parse(this.teaDetails[i].classification),
               "title":this.teaDetails[i].zh_title,
               "desc":this.teaDetails[i].zh_desc,
               "saleoff":this.handleSaleoff(this.teaDetails[i].saleoff),
+              "saleoffBgc": this.handleSaleoffColor(this.teaDetails[i].saleoff),
               "price":this.teaDetails[i].price,
               "no_discount_price":this.teaDetails[i].no_discount_price,
               "figure_img":this.teaDetails[i].figure_img
@@ -171,9 +184,11 @@
           let teaDetailsHandleArr = []
           for(let i=0;i<this.teaDetails.length;i++){
             teaDetailsHandleArr.push({
+              "classification": JSON.parse(this.teaDetails[i].classification),
               "title":this.teaDetails[i].en_title,
               "desc":this.teaDetails[i].en_desc,
               "saleoff":this.handleSaleoff(this.teaDetails[i].saleoff),
+              "saleoffBgc": this.handleSaleoffColor(this.teaDetails[i].saleoff),
               "price":this.teaDetails[i].price,
               "no_discount_price":this.teaDetails[i].no_discount_price,
               "figure_img":this.teaDetails[i].figure_img
@@ -185,6 +200,7 @@
       ...mapGetters(["langCode"])
     },
     mounted(){
+      console.log(this.largeclass,1)
     },
     methods:{
       handleSaleoff(val){
@@ -208,6 +224,13 @@
             return 'New product'
           }
         }
+      },
+      handleSaleoffColor(val){
+        if (val != ""){
+          val = JSON.parse(val)
+        }
+        let obj = { '1':"rgb(50,131,226)", '2':"rgb(225,49,47)", '3':"rgb(120,188,69)" }
+        return obj[ val.saleoff_type]
       }
     }
   }
