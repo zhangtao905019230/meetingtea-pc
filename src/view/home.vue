@@ -1,8 +1,6 @@
 <template>
   <div id="home">
-    <!--<header-component></header-component>-->
-    <!--<logo-and-search-component></logo-and-search-component>-->
-    <!--<category-list></category-list>-->
+    <floor-nav></floor-nav>
     <banner-component></banner-component>
     <four-small-banners></four-small-banners>
     <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>
@@ -22,6 +20,7 @@
   import BannerComponent from "./../components/banner-component"
   import ClassifiedDisplayCabinet from "./../components/classified-display-cabinet"
   import FourSmallBanners from "./../components/four-small-banners"
+  import FloorNav from "./../components/floor-nav"
   import GetGoodsInfor from "../service/get-goods-infor"
 
   export default {
@@ -31,7 +30,8 @@
       'category-list': CategoryList,
       'banner-component': BannerComponent,
       'classified-display-cabinet': ClassifiedDisplayCabinet,
-      'four-small-banners': FourSmallBanners
+      'four-small-banners': FourSmallBanners,
+      'floor-nav': FloorNav
     },
     data(){
       return {
