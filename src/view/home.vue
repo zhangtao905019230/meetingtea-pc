@@ -1,8 +1,8 @@
 <template>
   <div id="home">
-    <header-component></header-component>
-    <logo-and-search-component></logo-and-search-component>
-    <category-list></category-list>
+    <!--<header-component></header-component>-->
+    <!--<logo-and-search-component></logo-and-search-component>-->
+    <!--<category-list></category-list>-->
     <banner-component></banner-component>
     <four-small-banners></four-small-banners>
     <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>
@@ -39,9 +39,7 @@
           this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),
           this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails()
         ],
-        teaBanner:[
-          this.phpStaticFilePath+'/files/zhangtao25/'
-        ],
+        // categoryListSideIconBgc:[],
         comment:Array(8).fill({
           review:"很好",
           author:"张涛"

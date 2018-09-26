@@ -29,12 +29,14 @@
     color: #ff6700;
     border-bottom: 2px solid #ff6700;
   }
-  .classified-display-cabinet>.margin>.box-hd>h2{
+  .classified-display-cabinet>.margin>.box-hd>.top-link{display: flex;align-items: center}
+  .classified-display-cabinet>.margin>.box-hd>.top-link>h2{
     font-size: 22px;
     font-weight: 200;
     line-height: 58px;
     color: #333;
   }
+  .classified-display-cabinet>.margin>.box-hd>.top-link>.sideIcon{width: 8px;height: 22px;background-color: salmon;display: block;margin-right: 8px}
   .classified-display-cabinet>.margin>.box-hd>.more-link{color: black;font-size: 16px;margin-right: 2px;line-height: 58px}
   .classified-display-cabinet>.margin>.box-hd>.more-link>.icon-more{font-size: 20px;line-height: 58px}
   .classified-display-cabinet>.margin>.box-hd>.more-link:hover{color: #ff6600;cursor: pointer}
@@ -109,7 +111,10 @@
       <img :src="'http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/'+teaLargeclass+'/banner.jpg'" alt="" class="box-banner">
       <!--box-hd-->
       <div class="box-hd">
-        <h2 style="line-height: 58px">{{$t(teaLargeclass)}}</h2>
+        <div class="top-link">
+          <span class="sideIcon" :style="{backgroundColor:sideIconBgc[teaLargeclass]}"></span>
+          <h2 style="line-height: 58px">{{$t(teaLargeclass)}}</h2>
+        </div>
         <p class="more-link">
           <span>{{$t("classified.display.cabinet.more.link")}}</span>
           <i class="icon-more iconfont"></i>
@@ -159,8 +164,17 @@
     data(){
       return {
         url:this.dataInterface,
-        phpStaticFilePath:this.phpStaticFilePath
-        // teaLargeclass: JSON.parse(this.teaDetails[0].classification).largeclass
+        phpStaticFilePath:this.phpStaticFilePath,
+        sideIconBgc:{
+          '00':'rgb(140,34,20)',
+          '01':'rgb(176,194,85)',
+          '02':'rgb(191,190,164)',
+          '03':'rgb(98,85,66)',
+          '04':'rgb(212,109,42)',
+          '05':'rgb(207,148,52)',
+          '06':'rgb(176,37,97)',
+          '07':'rgb(118,72,67)',
+        }
       }
     },
     props:["teaLargeclass","teaDetails","comment"],

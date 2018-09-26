@@ -27,7 +27,7 @@
 <template>
   <div class="logo-and-search-component">
     <div class="margin">
-      <img src="./../assets/images/logo.png" style="height: 80px" alt="" class="logo" @click="goHome">
+      <img src="./../assets/logo1.png" style="height: 80px" alt="" class="logo" @click="goHome">
       <div class="search">
         <form action="">
           <input type="text" ref="searchTxt" class="searchTxt" @blur="txtBlur()" @focus="txtFocus()">
