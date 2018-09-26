@@ -13,8 +13,6 @@
     <classified-display-cabinet tea-largeclass="05" :tea-details="teaDetails[5]" :comment="comment"></classified-display-cabinet>
     <classified-display-cabinet tea-largeclass="06" :tea-details="teaDetails[6]" :comment="comment"></classified-display-cabinet>
     <classified-display-cabinet tea-largeclass="07" :tea-details="teaDetails[7]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="08" :tea-details="teaDetails[8]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="09" :tea-details="teaDetails[9]" :comment="comment"></classified-display-cabinet>
   </div>
 </template>
 <script>
@@ -25,7 +23,6 @@
   import ClassifiedDisplayCabinet from "./../components/classified-display-cabinet"
   import FourSmallBanners from "./../components/four-small-banners"
   import GetGoodsInfor from "../service/get-goods-infor"
-  import axios from 'axios'
 
   export default {
     components: {
@@ -39,8 +36,11 @@
     data(){
       return {
         teaDetails:[
-          this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),
-          this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails()
+          this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),
+          this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails(),this.initTeaDetails()
+        ],
+        teaBanner:[
+          this.phpStaticFilePath+'/files/zhangtao25/'
         ],
         comment:Array(8).fill({
           review:"很好",
@@ -75,9 +75,8 @@
       },
       getEightHotGoods(){
         GetGoodsInfor.GetEightHotGoods(this.dataInterface).then(res => {
-          console.log(res)
-          let arr = ['00','01','02','03','04','05','06','07','08','09']
-          for (let j=0;j<10;j++){
+          let arr = ['00','01','02','03','04','05','06','07']
+          for (let j=0;j<8;j++){
             for (let i=0;i<8;i++){
               this.teaDetails[j][i].classification = res[arr[j]][i].classification
               this.teaDetails[j][i].zh_title = res[arr[j]][i].zh_title

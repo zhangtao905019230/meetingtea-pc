@@ -8,7 +8,7 @@
   }
   .category-list>.category-list-content{display: flex;font-size: 16px;position: absolute;top: 60px;left: 0;}
   .category-list>.category-list-content>ul{background-color: rgba(0, 0, 0, 0.6);padding: 20px 0 20px 0;}
-  .category-list>.category-list-content>ul>li{width: 204px;line-height: 42px;padding-left: 30px;color: #fff}
+  .category-list>.category-list-content>ul>li{width: 204px;line-height: 52.5px;padding-left: 30px;color: #fff}
   .category-list>.category-list-content>div{height: 460px;}
   .category-list>.category-list-content>div>ul{
 
@@ -63,7 +63,7 @@
             v-for="(virtualData,index) of virtualDatas"
             :key="index"
             v-if="largeclass==virtualData.class_id.slice(0,2)">
-            <img src="/static/smallclass-img/GreenTea-Longjing.jpg" alt="">
+            <img :src="phpStaticFilePath+'/elfinder/files/zhangtao25/pc/category-list/'+virtualData.largeclass+'-'+virtualData.smallclass_img" alt="">
             <span>{{$t(virtualData.class_id)}}</span>
           </li>
         </ul>
@@ -79,35 +79,34 @@
   export default {
     data(){
       return{
-        largeclasses: ["00","01","02","03","04","05","06","07","08","09"],
+        largeclasses: ["00","01","02","03","04","05","06","07"],
         virtualDatas:[],
-        activeLargeclass: Array(10).fill(false),
-        activeLargeColor:Array(10).fill('rgba(0, 0, 0, 0)')
+        phpStaticFilePath:this.phpStaticFilePath,
+        activeLargeclass: Array(8).fill(false),
+        activeLargeColor:Array(8).fill('rgba(0, 0, 0, 0)')
       }
     },
     mounted(){
-      let _this = this
       GetGoodsInfor.GetAllTypesOfTea(this)
         .then(res=>{
-          _this.virtualDatas = res
-          console.log(_this.virtualDatas)
+          this.virtualDatas = res
         })
     },
     methods:{
       triggerActiveLargeclass(index){
-        this.activeLargeclass = Array(10).fill(false)
-        this.activeLargeColor = Array(10).fill('rgba(0, 0, 0, 0)');
+        this.activeLargeclass = Array(8).fill(false)
+        this.activeLargeColor = Array(8).fill('rgba(0, 0, 0, 0)');
         this.activeLargeclass[index] = true;
         this.activeLargeColor[index] = '#ff6700'
       },
       closeAllActiveLargeclass(){
-        this.activeLargeclass = Array(10).fill(false)
-        this.activeLargeColor = Array(10).fill('rgba(0, 0, 0, 0)');
+        this.activeLargeclass = Array(8).fill(false)
+        this.activeLargeColor = Array(8).fill('rgba(0, 0, 0, 0)');
       }
     },
     computed:{
       activeLargeclassWidth(){
-        let datashuliang = Array(10).fill(0)
+        let datashuliang = Array(8).fill(0)
         for(let i in this.virtualDatas){
           if(this.virtualDatas[i]['class_id'].slice(0,2) == "00"){
             datashuliang[0]++
@@ -125,10 +124,6 @@
             datashuliang[6]++
           }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "07"){
             datashuliang[7]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "08"){
-            datashuliang[8]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "09"){
-            datashuliang[9]++
           }else{}
         }
         let activeLargeclassWidth = []

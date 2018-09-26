@@ -106,7 +106,7 @@
   <div class="classified-display-cabinet">
     <div class="margin">
       <!--box-banner-->
-      <img src="http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/greentea-banner.jpg" alt="" class="box-banner">
+      <img :src="'http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/'+teaLargeclass+'/banner.jpg'" alt="" class="box-banner">
       <!--box-hd-->
       <div class="box-hd">
         <h2 style="line-height: 58px">{{$t(teaLargeclass)}}</h2>
@@ -118,9 +118,9 @@
       <!--box-bd-->
       <div class="box-bd">
         <ul class="box-bd-l">
-          <li :style='{"background-image": "url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/greentea0.jpg)"}'>
+          <li :style='{"background-image": "url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/"+teaLargeclass+"/top.jpg)"}'>
           </li>
-          <li :style='{"background-image": "url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/greentea1.jpg)"}'>
+          <li :style='{"background-image": "url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/"+teaLargeclass+"/bottom.jpg)"}'>
           </li>
         </ul>
         <ul class="box-bd-r">
@@ -159,6 +159,7 @@
     data(){
       return {
         url:this.dataInterface,
+        phpStaticFilePath:this.phpStaticFilePath
         // teaLargeclass: JSON.parse(this.teaDetails[0].classification).largeclass
       }
     },
@@ -200,7 +201,6 @@
       ...mapGetters(["langCode"])
     },
     mounted(){
-      console.log(this.largeclass,1)
     },
     methods:{
       handleSaleoff(val){

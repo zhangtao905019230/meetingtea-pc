@@ -51,6 +51,7 @@ Vue.use(ElementUI, {
 
 // Configuring different environment data request paths
 Vue.prototype.dataInterface = process.env.API_ROOT
+Vue.prototype.phpStaticFilePath = 'http://101.132.46.146:8080'
 
 Vue.config.productionTip = false
 

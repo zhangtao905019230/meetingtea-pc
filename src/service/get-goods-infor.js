@@ -6,7 +6,7 @@ function GetEightHotGoods(url) {
       .then(res => {
         let obj = {
           '00':[],'01':[],'02':[],'03':[],'04':[],
-          '05':[],'06':[],'07':[],'08':[],'09':[],
+          '05':[],'06':[],'07':[]
         }
         for(let i=0;i<res.data.length;i++){
           if (JSON.parse(res.data[i].classification).largeclass == '00'){
@@ -25,10 +25,6 @@ function GetEightHotGoods(url) {
             obj['06'].push(res.data[i])
           } else if (JSON.parse(res.data[i].classification).largeclass == '07'){
             obj['07'].push(res.data[i])
-          } else if (JSON.parse(res.data[i].classification).largeclass == '08'){
-            obj['08'].push(res.data[i])
-          } else if (JSON.parse(res.data[i].classification).largeclass == '09'){
-            obj['09'].push(res.data[i])
           } else {
 
           }
@@ -42,9 +38,8 @@ function GetEightHotGoods(url) {
 }
 function GetAllTypesOfTea() {
   return new Promise((resolve, reject) => {
-    axios.get("/static/json/allTypesOfTea.json")
+    axios.get("/static/json/classification-of-tea.json")
       .then(res => {
-        // console.log(res)
         resolve(res.data)
       })
       .catch(err=>{
