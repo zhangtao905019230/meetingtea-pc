@@ -31,7 +31,7 @@
       </ul>
     </div>
     <el-dialog title="介绍视频" :visible.sync="dialogFormVisible" width="680px" :before-close="handleClose">
-      <video src="/static/video/1538116537151286.mp4" controls="controls" ref="video">
+      <video :src="phpStaticFilePath+'/elfinder/files/zhangtao25/pc/video/1538116537151286.mp4'" controls="controls" ref="video">
         您的浏览器不支持 video 标签。
       </video>
     </el-dialog>
@@ -55,7 +55,8 @@
           {largeclass:'06',width: '153px',imageURL:'http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/accordion/花茶.jpeg'},
           {largeclass:'07',width: '153px',imageURL:'http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/accordion/茶具.jpeg'},
         ],
-        dialogFormVisible:false
+        dialogFormVisible:false,
+        phpStaticFilePath:this.phpStaticFilePath
       }
     },
     methods:{
