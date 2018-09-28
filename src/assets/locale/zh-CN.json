@@ -9,5 +9,7 @@
   "header.component.cart": "购物车",
   "category.list.all.product.categories": "所有商品分类",
   "classified.display.cabinet.from": "来自于 {name} 的评论",
-  "classified.display.cabinet.more.link": "查看更多"
+  "classified.display.cabinet.more.link": "查看更多",
+  "accordion.title.sketch": "茶叶简述",
+  "logo.and.search.component.culture": "茶文化馆"
 }

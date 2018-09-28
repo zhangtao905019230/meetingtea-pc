@@ -1,12 +1,14 @@
 <style>
-  .category-list{height: 60px;position: relative;z-index: 100}
+  .category-list{height: 60px;width:234px;position: relative;z-index: 100;box-sizing: border-box}
   .category-list>.category-list-title{
     width: 234px;height: 60px;
     font-size:16px;
     line-height:60px;
     display: block;
   }
-  .category-list>.category-list-content{display: flex;font-size: 16px;position: absolute;top: 60px;left: 0;}
+  .category-list:hover .category-list-content{display: flex}
+  .category-list>.category-list-content{display: none;font-size: 16px;position: absolute;top: 60px;left: 0;}
+  .category-list>.category-list-content.te{display: flex}
   .category-list>.category-list-content>ul{background-color: rgba(0, 0, 0, 0.6);padding: 20px 0 20px 0;}
   .category-list>.category-list-content>ul>li{width: 204px;line-height: 52.5px;padding-left: 30px;color: #fff}
   .category-list>.category-list-content>div{height: 460px;}
@@ -35,44 +37,46 @@
   .category-list>.category-list-content>div>ul>li>img{width: 40px;height: 40px;margin-right: 12px}
 </style>
 <template>
-  <div class="category-list margin">
-    <span class="category-list-title">
-      <i class="iconfont icon-list" style="font-size: 18px"></i>
-      {{$t("category.list.all.product.categories")}}
-    </span>
-    <div class="category-list-content"
-    @mouseleave="closeAllActiveLargeclass">
-      <ul class="ul-li_a">
-        <li
-          v-for="(largeclass,index) of largeclasses" :key="index"
-          @mousemove="triggerActiveLargeclass(index)"
-          :style="{'background-color': activeLargeColor[index],'display':'flex'}">
-          <span style="display: block;width: 170px">{{$t(largeclass)}}</span>
-          <i class="iconfont icon-right" style="font-size: 18px"></i>
-        </li>
-      </ul>
-      <div>
-        <ul
-          class="ul-li_a"
-          :style="{'width':activeLargeclassWidth[index]}"
-          v-for="(largeclass,index) of largeclasses"
-          :key="index"
-          v-show="activeLargeclass[index]"
-          @mouseleave="closeAllActiveLargeclass">
+  <div class="margin">
+    <div class="category-list">
+      <span class="category-list-title">
+        <i class="iconfont icon-list" style="font-size: 18px"></i>
+        {{$t("category.list.all.product.categories")}}
+      </span>
+      <div
+        @mouseleave="closeAllActiveLargeclass"
+        :class="{'category-list-content':categoryListContent,te}">
+        <ul class="ul-li_a">
           <li
-            v-for="(virtualData,index) of virtualDatas"
-            :key="index"
-            v-if="largeclass==virtualData.class_id.slice(0,2)">
-            <img :src="phpStaticFilePath+'/elfinder/files/zhangtao25/pc/category-list/'+virtualData.largeclass+'-'+virtualData.smallclass_img" alt="">
-            <span>{{$t(virtualData.class_id)}}</span>
+            v-for="(largeclass,index) of largeclasses" :key="index"
+            @mousemove="triggerActiveLargeclass(index)"
+            :style="{'background-color': activeLargeColor[index],'display':'flex'}">
+            <span style="display: block;width: 170px">{{$t(largeclass)}}</span>
+            <i class="iconfont icon-right" style="font-size: 18px"></i>
           </li>
         </ul>
+        <div>
+          <ul
+            class="ul-li_a"
+            :style="{'width':activeLargeclassWidth[index]}"
+            v-for="(largeclass,index) of largeclasses"
+            :key="index"
+            v-show="activeLargeclass[index]"
+            @mouseleave="closeAllActiveLargeclass">
+            <li
+              v-for="(virtualData,index) of virtualDatas"
+              :key="index"
+              v-if="largeclass==virtualData.class_id.slice(0,2)">
+              <img :src="phpStaticFilePath+'/elfinder/files/zhangtao25/pc/category-list/'+virtualData.largeclass+'-'+virtualData.smallclass_img" alt="">
+              <span>{{$t(virtualData.class_id)}}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import axios from 'axios'
   import {mapGetters} from 'vuex'
 
   import GetGoodsInfor from './../service/get-goods-infor'
@@ -83,7 +87,8 @@
         virtualDatas:[],
         phpStaticFilePath:this.phpStaticFilePath,
         activeLargeclass: Array(8).fill(false),
-        activeLargeColor:Array(8).fill('rgba(0, 0, 0, 0)')
+        activeLargeColor:Array(8).fill('rgba(0, 0, 0, 0)'),
+        categoryListContent: true
       }
     },
     mounted(){
@@ -132,7 +137,7 @@
         }
         return activeLargeclassWidth
       },
-      ...mapGetters(["langCode"])
+      ...mapGetters(["langCode","te"])
     }
   }
 </script>

@@ -2,17 +2,20 @@
   #floor-nav{
     position: fixed;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 1226px;
+    left: 14px;
+    transform: translate(0,-50%);
+    width: 77px;
     /*border: 1px solid salmon;*/
+    z-index: 100;
   }
   #floor-nav>.floor-nav-wrap{
     width: 65px;
     border: 1px solid #d6d6d6;
+    background-color: rgb(245,245,245);
     border-radius: 3px;
-    transform: translate(-88px,0);
+    /*transform: translate(-88px,0);*/
     padding: 5px;
+    /*position: relative;*/
   }
   #floor-nav>.floor-nav-wrap>ul>li{
     font-size:12px;

@@ -4,11 +4,11 @@
 <style>
   @font-face {
     font-family: 'iconfont';  /* project id 803857 */
-    src: url('//at.alicdn.com/t/font_803857_pf6hg29xee8.eot');
-    src: url('//at.alicdn.com/t/font_803857_pf6hg29xee8.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_803857_pf6hg29xee8.woff') format('woff'),
-    url('//at.alicdn.com/t/font_803857_pf6hg29xee8.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_803857_pf6hg29xee8.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_803857_11a5sj0een7r.eot');
+    src: url('//at.alicdn.com/t/font_803857_11a5sj0een7r.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_803857_11a5sj0een7r.woff') format('woff'),
+    url('//at.alicdn.com/t/font_803857_11a5sj0een7r.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_803857_11a5sj0een7r.svg#iconfont') format('svg');
   }
   .iconfont {
     font-family:"iconfont" !important;
@@ -29,6 +29,7 @@
   .icon-wenhao:before{ content: "\e61c" }
   .icon-fukuan:before{ content: "\e643" }
   .icon-tese:before{ content: "\e617" }
+  .icon-bofang:before{ content: "\e600" }
 
   .margin{margin: 0 auto;width: 1226px}
   .ul-li_a>li{color: #b0b0b0}

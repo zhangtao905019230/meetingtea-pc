@@ -22,6 +22,18 @@
   .logo-and-search-component>.margin>.search>.ul-li_a:hover{color: #ff3600}
   .logo-and-search-component>.margin>.search>.ul-li_a>li{margin-right: 20px}
   .logo-and-search-component>.margin>.search>.ul-li_a>li:nth-child(1){color: #ff3600}
+  .logo-and-search-component>.margin>.tea-culture-museum-btn{
+    margin-left: 280px;
+    /*background-color: #5daf34;*/
+    border: 1px solid rgb(245,74,38);
+    line-height: 28px;height: 28px;
+    padding: 0 28px 0 28px;
+    border-radius: 25.5px;
+    color: rgb(245,74,38);
+    font-size: 16px;
+    /*width: 135px;*/
+    height: 51px;
+  }
 
 </style>
 <template>
@@ -40,7 +52,9 @@
           <li>{{$t("03")}}</li>
         </ul>
       </div>
-      <div></div>
+      <!--<div></div>-->
+      <!--<el-button class="tea-culture-museum-btn" @click="goTeaCultureMuseum" type="primary">茶文化馆</el-button>-->
+      <input type="button" :value="$t('logo.and.search.component.culture')" @click="goTeaCultureMuseum" class="tea-culture-museum-btn"/>
     </div>
   </div>
 </template>
@@ -82,6 +96,9 @@
       },
       goHome(){
         this.$router.push({path:"/"})
+      },
+      goTeaCultureMuseum(){
+        this.$router.push({path:"/main/teaCultureMuseum"})
       }
     }
   }

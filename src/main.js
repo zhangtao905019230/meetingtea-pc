@@ -55,6 +55,11 @@ Vue.prototype.phpStaticFilePath = 'http://101.132.46.146:8080'
 
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  store.dispatch('checkPath',{name:to.name})
+  next()
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
