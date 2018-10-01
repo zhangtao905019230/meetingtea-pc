@@ -11,5 +11,16 @@
   "classified.display.cabinet.from": "from {name} comment",
   "classified.display.cabinet.more.link": "View More",
   "accordion.title.sketch": "sketch",
-  "logo.and.search.component.culture": "Tea Culture Museum"
+  "logo.and.search.component.culture": "Tea Culture Museum",
+  "login.welcome.landing": "Welcome Landing",
+  "login.tips": "According to the Network Security Law, in order to ensure the security and normal use of your account.The new Meeting Tea privacy policy is on line.",
+  "login.form.tips": "Meeting Tea will not ask you to password.",
+  "login.scavenging.login": "Scavenging",
+  "login.account.login": "Account",
+  "login.login.btn":"Login",
+  "login.scavenging.tips":"Open cell scan two-dimensional code",
+  "login.username.placeholder": "mailbox / user name / verified cell phone",
+  "login.password.placeholder": "password",
+  "login.weixin": "WeChat",
+  "login.immediate.registration":"Register"
 }

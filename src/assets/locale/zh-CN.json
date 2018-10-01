@@ -11,5 +11,16 @@
   "classified.display.cabinet.from": "来自于 {name} 的评论",
   "classified.display.cabinet.more.link": "查看更多",
   "accordion.title.sketch": "茶叶简述",
-  "logo.and.search.component.culture": "茶文化馆"
+  "logo.and.search.component.culture": "茶文化馆",
+  "login.welcome.landing": "欢迎登陆",
+  "login.tips": "依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 新版《遇茶隐私政策》已上线，将更有利于保护您的个人隐私。",
+  "login.form.tips": "遇茶不会以任何理由要求您转账汇款，谨防诈骗。",
+  "login.scavenging.login": "扫码登录",
+  "login.account.login": "账户登陆",
+  "login.login.btn":"登陆",
+  "login.scavenging.tips":"打开手机京东扫描二维码",
+  "login.username.placeholder": "邮箱/用户名/已验证手机",
+  "login.password.placeholder": "密码",
+  "login.weixin": "微信",
+  "login.immediate.registration":"立即注册"
 }

@@ -32,7 +32,7 @@
   }
 </style>
 <template>
-  <div id="floor-nav">
+  <div id="floor-nav" v-show="isShowFloorNav">
     <div class="floor-nav-wrap">
       <ul>
         <li
@@ -61,23 +61,31 @@
           {zh:'黄 茶',en:'Yellow',scrollTo:5205},
           {zh:'花 茶',en:'Scented',scrollTo:6071},
           {zh:'茶 具',en:'Tea Set',scrollTo:6937}
-        ]
+        ],
+        scrollTop:$(document).scrollTop(),
+        // isShowFloorNav:false
       }
     },
     mounted(){
-
+      let self = this
+      window.addEventListener('scroll',function (e) {
+        self.scrollTop = $(document).scrollTop()
+      })
     },
     methods:{
       Which_floor_are_you_going_to_please(scrollTo){
-        // window.srcollTo(scrollTo)
-        // console.log(scrollTo)
-        // document.body.scrollTop = scrollTo
-        // document.documentElement.scrollTop = scrollTo
-        $("html,body").animate({ scrollTop: scrollTo }, 500);//100为滚动条的位置，1000为滚动的时延
+        $("html,body").animate({ scrollTop: scrollTo }, 500);
       }
     },
     computed:{
-      ...mapGetters(['langCode'])
+      ...mapGetters(['langCode']),
+      isShowFloorNav(){
+        if (this.scrollTop>875){
+          return true
+        } else {
+          return false
+        }
+      }
     }
   }
 </script>

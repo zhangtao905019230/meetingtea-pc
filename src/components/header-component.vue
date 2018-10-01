@@ -19,14 +19,14 @@
     <div class="margin">
       <div class="l">
         <ul class="ul-li_a">
-          <li>{{$t("header.component.home.page")}}</li>
-          <li>{{$t("header.component.home.page")}}</li>
+          <li @click="goTo('/main/home')">{{$t("header.component.home.page")}}</li>
+          <li>{{$t("header.component.mobile.version")}}</li>
           <li :class="['iconfont',langCodeHandle]" style="font-size:25px" @click="onChangeLang"></li>
         </ul>
       </div>
       <div class="r">
         <ul  class="ul-li_a">
-          <li>{{$t("header.component.login")}}</li>
+          <li @click="goTo('/login')">{{$t("header.component.login")}}</li>
           <li>{{$t("header.component.register")}}</li>
           <li>{{$t("header.component.order")}}</li>
           <li>{{$t("header.component.help")}}</li>
@@ -55,6 +55,7 @@
     methods:{
       onChangeLang(){
         this.changeLang(this.changeToTheContrary(this.langCode))
+        // setTimeout(()=>{})
         window.location.reload()
       },
       changeToTheContrary(langCode){
@@ -63,6 +64,9 @@
         } else {
           return "zh"
         }
+      },
+      goTo(path){
+        this.$router.push({path:path})
       },
       ...mapActions(["changeLang"])
     },

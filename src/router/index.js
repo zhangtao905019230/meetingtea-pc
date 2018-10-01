@@ -29,7 +29,10 @@ const router = new Router({
         {
           path: 'teaCultureMuseum',
           name: 'teaCultureMuseum',
-          component: teaCultureMuseum
+          component: teaCultureMuseum,
+          meta: {
+            title: '遇茶-茶文化馆'
+          }
         },
         {
           path: 'other',
@@ -41,7 +44,10 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: login
+      component: login,
+      meta: {
+        title: '遇茶-欢迎登陆'
+      }
     },
   ],
   // mode: 'history'

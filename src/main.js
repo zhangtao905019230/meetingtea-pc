@@ -57,6 +57,11 @@ Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
   store.dispatch('checkPath',{name:to.name})
+  if (to.meta.title){
+    document.title = to.meta.title
+  }else {
+    document.title = '遇见茶，遇见你——生活累了，坐下来一起喝杯茶吧。'
+  }
   next()
 })
 

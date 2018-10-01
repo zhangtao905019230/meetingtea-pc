@@ -1,111 +1,138 @@
+<style>
+  .login-margin{width: 990px;margin: 0 auto}
+  #login>.header>.logo>.login-margin{display: flex;align-items: center;height: 120px}
+  #login>.header>.logo>.login-margin>img{height: 80px;cursor: pointer}
+  #login>.header>.logo>.login-margin>span{font-size: 25px}
+  #login>.header>.tips{background-color: #fff8f0}
+  #login>.header>.tips>.login-margin>p{font-size: 12px;color: #999;line-height: 39px;text-align: center}
+  #login>.main{background-color: #ed3e26;height: 475px}
+  #login>.main>.login-margin{height: 475px;background-image: url("https://img10.360buyimg.com/da/jfs/t1/156/38/10083/86438/5bad80c2E3814ad9f/0b4487b214da36f2.jpg")}
+  #login>.main>.login-margin>.login-wrap{width: 346px;float: right;margin-top: 10px;background-color: white}
+  #login>.main>.login-margin>.login-wrap>.tips{font-size: 12px;color: #999;line-height: 39px;text-align: center;background-color: #fff8f0}
+  #login>.main>.login-margin>.login-wrap>.coagent{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    padding: 0 20px 0 20px;
+    border-top: 1px solid #f4f4f4;
+    justify-content: space-between;
+  }
+  #login>.main>.login-margin>.login-wrap>.coagent>div{display: flex}
+  #login>.main>.login-margin>.login-wrap>.coagent>div>a{display: flex;align-items: center;color: #666}
+  #login>.main>.login-margin>.login-wrap>.coagent>div>a>img{margin-right: 5px}
+  #login>.main>.login-margin>.login-wrap>.coagent>a:nth-child(2){color: #b61d1d;}
+  #login>.main>.login-margin>.login-wrap>.login-form>ul{
+    border-bottom: 1px solid #f4f4f4;
+    font-size: 18px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    line-height: 55px;
+    /*font-weight: 700;*/
+  }
+  #login>.main>.login-margin>.login-wrap>.login-form>ul>li:hover{
+    font-weight: 700;
+    color: #e4393c;
+    cursor: pointer;
+  }
+  #login>.main>.login-margin>.login-wrap>.login-form>ul>li.active{
+    font-weight: 700;
+    color: #e4393c;
+  }
+  #login>.main>.login-margin>.login-wrap>.login-form .el-button{
+    background-color: #e4393c;
+    border: 1px solid #e85356;
+    color: white;
+    width: 300px;
+    /*margin-left: 55px;*/
+
+  }
+
+</style>
 <template>
-  <div class="login">
-    <div class="logo margin" style="display: none">
-      <img src="https://s10.mogucdn.com/p1/160408/upload_ie4gkmjvgvqtiytdg4zdambqgiyde_220x52.png" alt="">
-      <span>{{$t("login.logo.span")}}</span>
+  <div id="login">
+    <div class="header">
+      <div class="logo">
+        <div class="login-margin">
+          <img @click="goTo('/main/home')" src="./../assets/logo1.png"/>
+          <span>{{$t("login.welcome.landing")}}</span>
+        </div>
+      </div>
+      <div class="tips">
+        <div class="login-margin">
+          <p>{{$t("login.tips")}}</p>
+        </div>
+      </div>
     </div>
-    <div class="content">
-      <el-tabs v-model="activeName" @tab-click="handleClick" class="login-box-warp" style="width: 320px;height: 350px;text-align: center">
-        <el-tab-pane :label="$t('login.content.commonlogin')" name="first">
-          <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-            <el-form-item label="" prop="username">
-              <el-input :placeholder="$t('login.username.placeholder')" type="text" v-model="ruleForm.username"></el-input>
-            </el-form-item>
-            <el-form-item label="" prop="password">
-              <el-input :placeholder="$t('login.password.placeholder')" type="password" v-model="ruleForm.password"></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" style="width: 320px" @click="submitForm('ruleForm')">{{$t('login')}}</el-button>
-            </el-form-item>
-          </el-form>
-        </el-tab-pane>
-        <el-tab-pane :label="$t('login.content.mobilelogin')" name="second">
-          <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-            <el-form-item label="" prop="username">
-              <el-input :placeholder="$t('login.username.placeholder')" type="text" v-model="ruleForm.username"></el-input>
-            </el-form-item>
-            <el-form-item label="" prop="password">
-              <el-input :placeholder="$t('login.password.placeholder')" type="password" v-model="ruleForm.password"></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" style="width: 320px" @click="submitForm('ruleForm')">{{$t('login')}}</el-button>
-            </el-form-item>
-          </el-form>
-        </el-tab-pane>
-      </el-tabs>
+    <div class="main">
+      <div class="login-margin">
+        <div class="login-wrap">
+          <p class="tips">{{$t("login.form.tips")}}</p>
+          <div class="login-form">
+            <ul>
+              <li @click="ishow(0)" :class="{active:isShowQrcodeLogin}">{{$t("login.scavenging.login")}}</li>
+              <li style="color: #f4f4f4;font-weight: 100" >丨</li>
+              <li @click="ishow(1)" :class="{active:isShowLoginBox}">{{$t("login.account.login")}}</li>
+            </ul>
+            <div class="qrcode-login" style="padding: 30px 20px 30px 20px" v-show="isShowLoginBox">
+              <el-form>
+                <el-form-item>
+                  <el-input style="width: 300px" :placeholder="$t('login.username.placeholder')"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-input style="width: 300px" :placeholder="$t('login.password.placeholder')"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button>{{$t('login.login.btn')}}</el-button>
+                </el-form-item>
+                <!--<el-input></el-input>-->
+                <!--<el-button>登陆</el-button>-->
+              </el-form>
+            </div>
+            <div class="login-box" v-show="isShowQrcodeLogin" style="text-align: center">
+              <img src="./../assets/images/show.png" alt="" style="margin: 10px 0 10px 0">
+              <p style="text-align: center;margin: 10px 0 10px 0">{{$t("login.scavenging.tips")}}</p>
+            </div>
+          </div>
+          <div class="coagent">
+            <div>
+              <a href="###"><img width="20" src="./../assets/icon/qq.png" alt="">QQ</a>
+              <span style="color: #666">丨</span>
+              <a href="###"><img width="20" src="./../assets/icon/weixin.png" alt="">{{$t('login.weixin')}}</a>
+            </div>
+            <a href="###" class="iconfont icon-you-yuan">{{$t('login.immediate.registration')}}</a>
+          </div>
+        </div>
+      </div>
     </div>
+    <end></end>
   </div>
 </template>
-<style>
-  .login>.logo{padding: 20px 0}
-  .login>.logo>span {
-    display: inline-block;
-    /*height: 28px;*/
-    width: 861px;
-    background-color: #ffefef;
-    border: 1px solid #ffc0cc;
-    text-align: center;
-    line-height: 28px;
-    font-size: 11px;
-    color: #666;
-    transform: translateY(-20px);
-  }
-  .login>.content{
-    width: 1519.2px;height:600px;
-    /*background-image: url("https://s17.mogucdn.com/p2/170105/upload_541i9di2b3icf9j13f24e0bg7b1i6_1920x600.png");*/
-    margin: 0 auto;
-  }
-  .login>.content>.login-box-warp{
-    float: right;
-    margin-right: 150px;
-    margin-top: 45px;
-    background-color: #ffeceb;
-    opacity: .9;
-    padding: 0 45px;
-  }
-  .login>.content>.login-box-warp .el-tabs__nav{height: 55px}
-  .login>.content>.login-box-warp .el-tabs__nav>#tab-first{line-height: 55px;font-weight: 700}
-  .login>.content>.login-box-warp .el-tabs__nav>#tab-second{line-height: 55px;font-weight: 700}
-</style>
 <script>
+  import End from './../components/end'
   export default {
-    mounted(){
-      document.getElementsByClassName("el-tabs__nav")[0].style.transform = "translateX(50px)";
+    components:{
+      'end': End
     },
-    data() {
-      return {
-        activeName: 'second',
-        ruleForm: {
-          username: '',
-          password: ''
-        },
-        rules: {
-          username: [
-            // { validator: validatePass, trigger: 'blur' }
-          ],
-          password: [
-            // { validator: validatePass, trigger: 'blur' }
-          ],
+    data(){
+      return{
+        isShowQrcodeLogin:true,
+        isShowLoginBox:false,
+      }
+    },
+    methods:{
+      ishow(val){
+        if (val == 0){
+          this.isShowQrcodeLogin = true
+          this.isShowLoginBox = false
+        } else {
+          this.isShowQrcodeLogin = false
+          this.isShowLoginBox = true
         }
-      };
-    },
-    methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-            this.$router.push({path:"/home"})
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-      handleClick(tab, event) {
-        console.log(tab, event);
+      goTo(path){
+        this.$router.push({path:path})
       }
     }
   }

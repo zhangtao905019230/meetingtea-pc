@@ -8,7 +8,7 @@
   }
   .category-list:hover .category-list-content{display: flex}
   .category-list>.category-list-content{display: none;font-size: 16px;position: absolute;top: 60px;left: 0;}
-  .category-list>.category-list-content.te{display: flex}
+  .category-list>.category-list-content.is-show-category-list-content{display: flex}
   .category-list>.category-list-content>ul{background-color: rgba(0, 0, 0, 0.6);padding: 20px 0 20px 0;}
   .category-list>.category-list-content>ul>li{width: 204px;line-height: 52.5px;padding-left: 30px;color: #fff}
   .category-list>.category-list-content>div{height: 460px;}
@@ -45,7 +45,7 @@
       </span>
       <div
         @mouseleave="closeAllActiveLargeclass"
-        :class="{'category-list-content':categoryListContent,te}">
+        :class="{'category-list-content':categoryListContent,'is-show-category-list-content':isShowCategoryListContent}">
         <ul class="ul-li_a">
           <li
             v-for="(largeclass,index) of largeclasses" :key="index"
@@ -137,7 +137,7 @@
         }
         return activeLargeclassWidth
       },
-      ...mapGetters(["langCode","te"])
+      ...mapGetters(["langCode","isShowCategoryListContent"])
     }
   }
 </script>
