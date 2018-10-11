@@ -13,10 +13,11 @@ const action = {
   userLogout({commit},payload){
     commit("userLogout",payload)
   },
-  checkLogin({commit}, next) {
+  checkLogin({commit}, payload) {
+    console.log(payload)
     axios({
       method:"get",
-      url:"http://localhost:3030/pc-check-auth"+"?"+localStorage.getItem('user_info'),
+      url:payload.dataInterface+":3030/pc-check-auth"+"?"+localStorage.getItem('user_info'),
       headers:{
         "Authorization":localStorage.getItem('token')
       }
@@ -24,11 +25,11 @@ const action = {
     .then(res => {
       if (res.data.success == true){
         commit("userLogin",{token:localStorage.getItem('token'),user_info:JSON.parse(localStorage.getItem('user_info'))})
-        next()
+        payload.next()
       }else if (res.data.success == false) {
         console.log(res.data)
         alert('token已过期')
-        next('/login')
+        payload.next('/login')
       }
     })
   }

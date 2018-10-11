@@ -65,7 +65,7 @@ router.beforeEach((to, from, next) => {
   if (to.path=='/login'||to.path=='/reg'||to.path=='/main/home'){
     next()
   } else {
-    store.dispatch('checkLogin',next)
+    store.dispatch('checkLogin',{next:next,dataInterface:process.env.API_ROOT})
   }
 })
 
