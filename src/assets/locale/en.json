@@ -3,6 +3,8 @@
   "header.component.mobile.version": "Meeting Tea home mobile ver",
   "header.component.login": "Login",
   "header.component.register": "Register",
+  "header.component.welcome": "Hi, ",
+  "header.component.logout": "Logout",
   "header.component.order": "Order",
   "header.component.help": "Help",
   "header.component.about": "About Meeting Tea",
@@ -22,5 +24,6 @@
   "login.username.placeholder": "mailbox / user name / verified cell phone",
   "login.password.placeholder": "password",
   "login.weixin": "WeChat",
-  "login.immediate.registration":"Register"
+  "login.immediate.registration":"Register",
+  "reg.welcome.reg":"Welcome to registration"
 }

@@ -3,6 +3,8 @@
   "header.component.mobile.version": "遇茶手机端",
   "header.component.login": "登录",
   "header.component.register": "注册",
+  "header.component.welcome": "你好, ",
+  "header.component.logout": "退出",
   "header.component.order": "我的订单",
   "header.component.help": "帮助中心",
   "header.component.about": "关于遇茶",
@@ -22,5 +24,6 @@
   "login.username.placeholder": "邮箱/用户名/已验证手机",
   "login.password.placeholder": "密码",
   "login.weixin": "微信",
-  "login.immediate.registration":"立即注册"
+  "login.immediate.registration":"立即注册",
+  "reg.welcome.reg":"欢迎注册"
 }

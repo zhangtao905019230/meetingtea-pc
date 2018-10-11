@@ -62,10 +62,13 @@ router.beforeEach((to, from, next) => {
   }else {
     document.title = '遇见茶，遇见你——生活累了，坐下来一起喝杯茶吧。'
   }
-  next()
+  if (to.path=='/login'||to.path=='/reg'||to.path=='/main/home'){
+    next()
+  } else {
+    store.dispatch('checkLogin',next)
+  }
 })
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

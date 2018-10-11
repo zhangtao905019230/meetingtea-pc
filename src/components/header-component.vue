@@ -26,8 +26,10 @@
       </div>
       <div class="r">
         <ul  class="ul-li_a">
-          <li @click="goTo('/login')">{{$t("header.component.login")}}</li>
-          <li>{{$t("header.component.register")}}</li>
+          <li @click="goTo('/login')" v-show="loginLogoutRegisterBtnStatus[0]">{{$t("header.component.login")}}</li>
+          <li @click="goReg" v-show="loginLogoutRegisterBtnStatus[2]">{{$t("header.component.register")}}</li>
+          <li v-show="loginLogoutRegisterBtnStatus[1]">{{$t("header.component.welcome")}}{{userInfo.user_name}}</li>
+          <li @click="logout" v-show="loginLogoutRegisterBtnStatus[1]">{{$t("header.component.logout")}}</li>
           <li>{{$t("header.component.order")}}</li>
           <li>{{$t("header.component.help")}}</li>
           <li>{{$t("header.component.about")}}</li>
@@ -68,7 +70,13 @@
       goTo(path){
         this.$router.push({path:path})
       },
-      ...mapActions(["changeLang"])
+      logout(){
+        this.userLogout()
+      },
+      goReg(){
+        this.$router.push({path:'/reg'})
+      },
+      ...mapActions(["changeLang","userLogout"])
     },
     computed:{
       langCodeHandle:function(){
@@ -78,7 +86,7 @@
           return "icon-en"
         }
       },
-      ...mapGetters(["langCode"])
+      ...mapGetters(["langCode","loginLogoutRegisterBtnStatus","userInfo"])
     }
   }
 </script>

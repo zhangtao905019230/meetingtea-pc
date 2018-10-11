@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import home from './../view/home'
 import login from './../view/login'
+import reg from './../view/register'
 import main from './../view/main'
 
 import teaCultureMuseum from './../view/tea-culture-museum'
@@ -20,6 +21,7 @@ const router = new Router({
       path: '/main',
       name: 'main',
       component: main,
+      meta: { requiresAuth: true },
       children:[
         {
           path: 'home',
@@ -47,6 +49,14 @@ const router = new Router({
       component: login,
       meta: {
         title: '遇茶-欢迎登陆'
+      }
+    },
+    {
+      path: '/reg',
+      name: 'reg',
+      component: reg,
+      meta: {
+        title: '遇茶-欢迎注册'
       }
     },
   ],

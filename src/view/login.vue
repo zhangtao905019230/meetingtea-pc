@@ -20,7 +20,7 @@
   #login>.main>.login-margin>.login-wrap>.coagent>div{display: flex}
   #login>.main>.login-margin>.login-wrap>.coagent>div>a{display: flex;align-items: center;color: #666}
   #login>.main>.login-margin>.login-wrap>.coagent>div>a>img{margin-right: 5px}
-  #login>.main>.login-margin>.login-wrap>.coagent>a:nth-child(2){color: #b61d1d;}
+  #login>.main>.login-margin>.login-wrap>.coagent>span:nth-child(2){color: #b61d1d;cursor: pointer}
   #login>.main>.login-margin>.login-wrap>.login-form>ul{
     border-bottom: 1px solid #f4f4f4;
     font-size: 18px;
@@ -78,16 +78,14 @@
             <div class="qrcode-login" style="padding: 30px 20px 30px 20px" v-show="isShowLoginBox">
               <el-form>
                 <el-form-item>
-                  <el-input style="width: 300px" :placeholder="$t('login.username.placeholder')"></el-input>
+                  <el-input v-model="user_name" style="width: 300px" :placeholder="$t('login.username.placeholder')"></el-input>
                 </el-form-item>
                 <el-form-item>
-                  <el-input style="width: 300px" :placeholder="$t('login.password.placeholder')"></el-input>
+                  <el-input v-model="user_password" type="password" style="width: 300px" :placeholder="$t('login.password.placeholder')"></el-input>
                 </el-form-item>
                 <el-form-item>
-                  <el-button>{{$t('login.login.btn')}}</el-button>
+                  <el-button @click="goHome">{{$t('login.login.btn')}}</el-button>
                 </el-form-item>
-                <!--<el-input></el-input>-->
-                <!--<el-button>登陆</el-button>-->
               </el-form>
             </div>
             <div class="login-box" v-show="isShowQrcodeLogin" style="text-align: center">
@@ -101,7 +99,7 @@
               <span style="color: #666">丨</span>
               <a href="###"><img width="20" src="./../assets/icon/weixin.png" alt="">{{$t('login.weixin')}}</a>
             </div>
-            <a href="###" class="iconfont icon-you-yuan">{{$t('login.immediate.registration')}}</a>
+            <span class="iconfont icon-you-yuan" @click="goReg">{{$t('login.immediate.registration')}}</span>
           </div>
         </div>
       </div>
@@ -111,6 +109,8 @@
 </template>
 <script>
   import End from './../components/end'
+  import UserInfo from './../service/user-info'
+  import {mapActions,mapGetters} from 'vuex'
   export default {
     components:{
       'end': End
@@ -119,9 +119,12 @@
       return{
         isShowQrcodeLogin:true,
         isShowLoginBox:false,
+        user_name: "",
+        user_password: ""
       }
     },
     methods:{
+      ...mapActions(['userLogin']),
       ishow(val){
         if (val == 0){
           this.isShowQrcodeLogin = true
@@ -133,6 +136,22 @@
       },
       goTo(path){
         this.$router.push({path:path})
+      },
+      goHome(){
+        let val = {user_name: this.user_name,user_password:this.user_password}
+        UserInfo.ValidateLogon(this.dataInterface,val)
+          .then(res => {
+              if (res.success == false){
+                this.$message('账号密码错误')
+              }else {
+                this.userLogin(res)
+                this.$router.push({path:'/main/home'})
+              }
+            }
+          )
+      },
+      goReg(){
+        this.$router.push({path:'/reg'})
       }
     }
   }

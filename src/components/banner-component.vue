@@ -25,9 +25,9 @@
     -webkit-align-items: center;
     align-items: center;
   }
-  .banner-component>.margin .swiper-slide:nth-child(1){background-image: url("http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/banner-component/banner0.jpg")}
-  .banner-component>.margin .swiper-slide:nth-child(2){background-image: url("http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/banner-component/banner1.jpg")}
-  .banner-component>.margin .swiper-slide:nth-child(3){background-image: url("http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/banner-component/banner2.jpg")}
+  .banner-component>.margin .swiper-slide:nth-child(1){background-image: url("./../assets/images/banner/banner0/main.jpeg")}
+  .banner-component>.margin .swiper-slide:nth-child(2){background-image: url("./../assets/images/banner/banner0/main.jpeg")}
+  .banner-component>.margin .swiper-slide:nth-child(3){background-image: url("./../assets/images/banner/banner0/main.jpeg")}
   .banner-component>.margin .swiper-pagination{top: 90%;left: 50%}
   .banner-component>.margin .swiper-pagination span{margin: 10px}
   .banner-component>.margin .swiper-button-prev{left: 245px}
@@ -40,9 +40,24 @@
       <!-- Swiper -->
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"></div>
-          <div class="swiper-slide"></div>
-          <div class="swiper-slide"></div>
+          <div class="swiper-slide" style="position: relative">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+          </div>
+          <div class="swiper-slide" style="position: relative">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+          </div>
+          <div class="swiper-slide" style="position: relative">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
+            <img style="position: absolute" src="./../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+          </div>
         </div>
       </div>
       <!-- Add Pagination -->
@@ -76,6 +91,16 @@
         effect : 'fade',
         fade: {
           crossFade: false,
+        },
+        on:{
+          init: function(){
+            swiperAnimateCache(this); //隐藏动画元素
+            swiperAnimate(this); //初始化完成开始动画
+          },
+          slideChangeTransitionEnd: function(){
+            swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+            //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+          }
         }
       });
     }

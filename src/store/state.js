@@ -9,6 +9,9 @@ if (localStorage.langCode) {
 // console.log(langCode)
 const state = {
   langCode:langCode,
-  isShowCategoryListContent:false
+  isShowCategoryListContent:false,
+  token:'',
+  user_info:'',
+  loginLogoutRegisterBtnStatus:[true,false,true]
 }
 export default state
