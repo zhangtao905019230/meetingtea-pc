@@ -26,7 +26,6 @@ const action = {
           commit("userLogin",{token:localStorage.getItem('token'),user_info:JSON.parse(localStorage.getItem('user_info'))})
           payload.next()
         }else if (res.data.success == false) {
-          // console.log(res.data)
           if (payload.tips){
             if (localStorage.token!=''){
               alert('token已过期')
