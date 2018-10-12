@@ -4,6 +4,7 @@ function GetEightHotGoods(url) {
   return new Promise((resolve, reject) => {
     axios.get(url + ":3030/pc-goods/getEightHotGoods")
       .then(res => {
+        // console.log(res)
         let obj = {
           '00':[],'01':[],'02':[],'03':[],'04':[],
           '05':[],'06':[],'07':[]

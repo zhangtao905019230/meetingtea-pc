@@ -55,6 +55,8 @@ Vue.prototype.phpStaticFilePath = 'http://101.132.46.146:8080'
 
 Vue.config.productionTip = false
 
+store.dispatch('checkLogin',{next:function next(){console.log(1)},dataInterface:process.env.API_ROOT,tips:false})
+
 router.beforeEach((to, from, next) => {
   store.dispatch('checkPath',{name:to.name})
   if (to.meta.title){
@@ -65,7 +67,7 @@ router.beforeEach((to, from, next) => {
   if (to.path=='/login'||to.path=='/reg'||to.path=='/main/home'){
     next()
   } else {
-    store.dispatch('checkLogin',{next:next,dataInterface:process.env.API_ROOT})
+    store.dispatch('checkLogin',{next:next,dataInterface:process.env.API_ROOT,tips:true})
   }
 })
 

@@ -14,7 +14,6 @@ const action = {
     commit("userLogout",payload)
   },
   checkLogin({commit}, payload) {
-    console.log(payload)
     axios({
       method:"get",
       url:payload.dataInterface+":3030/pc-check-auth"+"?"+localStorage.getItem('user_info'),
@@ -22,16 +21,24 @@ const action = {
         "Authorization":localStorage.getItem('token')
       }
     })
-    .then(res => {
-      if (res.data.success == true){
-        commit("userLogin",{token:localStorage.getItem('token'),user_info:JSON.parse(localStorage.getItem('user_info'))})
-        payload.next()
-      }else if (res.data.success == false) {
-        console.log(res.data)
-        alert('token已过期')
-        payload.next('/login')
-      }
-    })
+      .then(res => {
+        if (res.data.success == true){
+          commit("userLogin",{token:localStorage.getItem('token'),user_info:JSON.parse(localStorage.getItem('user_info'))})
+          payload.next()
+        }else if (res.data.success == false) {
+          // console.log(res.data)
+          if (payload.tips){
+            if (localStorage.token!=''){
+              alert('token已过期')
+            } else {
+              alert('您尚未登录')
+            }
+          }else {
+
+          }
+          payload.next('/login')
+        }
+      })
   }
 }
 export default action

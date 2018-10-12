@@ -42,10 +42,10 @@
               <el-input v-model="ruleForm1.user_name" placeholder="用户名：您的账号名和登录名"></el-input>
             </el-form-item>
             <el-form-item prop="user_password">
-              <el-input v-model="ruleForm1.user_password" placeholder="设置密码：建议使用两种以上字符组合"></el-input>
+              <el-input type="password" v-model="ruleForm1.user_password" placeholder="设置密码：建议使用两种以上字符组合"></el-input>
             </el-form-item>
             <el-form-item prop="user_password_again">
-              <el-input v-model="ruleForm1.user_password_again" placeholder="确认密码：请再次输入密码"></el-input>
+              <el-input type="password" v-model="ruleForm1.user_password_again" placeholder="确认密码：请再次输入密码"></el-input>
             </el-form-item>
             <el-form-item prop="mailbox">
               <el-input v-model="ruleForm1.mailbox" placeholder="邮箱验证:请输入邮箱"></el-input>
