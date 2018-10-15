@@ -59,7 +59,7 @@
       }
     },
     mounted(){
-
+      // dataInterface:this.dataInterface
     },
     methods:{
       onChangeLang(){
@@ -86,7 +86,7 @@
       handleTouxiang(){
         if (this.userInfo.touxiang){
           let str = this.userInfo.touxiang
-          return 'http://localhost:3030' + str.slice(6,str.length)
+          return this.dataInterface+':3030' + str.slice(6,str.length)
         } else {
           return ""
         }

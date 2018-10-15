@@ -180,10 +180,11 @@
         this.ruleForm1.touxiang = val
       },
       httpRequest(val){
+        let _this = this
         var formdata = new FormData();
         formdata.append('file',val.file);
         formdata.append('action','test');
-        aixos.post("http://localhost:3030/user/touxiang",formdata)
+        aixos.post(_this.dataInterface+":3030/user/touxiang",formdata)
           .then(res => {
             // console.log(res)
             if (res.data.success==true){
