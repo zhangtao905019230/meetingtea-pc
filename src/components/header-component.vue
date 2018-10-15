@@ -5,6 +5,7 @@
   header>.margin>.l>ul>li{margin-right: 32px}
   header>.margin>.r>ul{height: 40px;display: flex}
   header>.margin>.r>ul>li{margin-right: 32px}
+  header>.margin>.r>ul>li.touxiang{width: 40px;height: 40px;overflow: hidden;border-radius: 50%}
   header>.margin>.cart-btn{height: 40px;padding-right: 24px; display: block;display: flex;background-color: #ff3600;overflow: hidden}
   header>.margin>.cart-btn>.img-wrap{transform: translateY(0);transition: .2s}
   header>.margin>.cart-btn:hover>.img-wrap{transform: translateY(-30px)}
@@ -28,6 +29,9 @@
         <ul  class="ul-li_a">
           <li @click="goTo('/login')" v-show="loginLogoutRegisterBtnStatus[0]">{{$t("header.component.login")}}</li>
           <li @click="goReg" v-show="loginLogoutRegisterBtnStatus[2]">{{$t("header.component.register")}}</li>
+          <li class="touxiang">
+            <img height="40" :src="handleTouxiang()" alt="">
+          </li>
           <li v-show="loginLogoutRegisterBtnStatus[1]">{{$t("header.component.welcome")}}{{userInfo.user_name}}</li>
           <li @click="logout" v-show="loginLogoutRegisterBtnStatus[1]">{{$t("header.component.logout")}}</li>
           <li>{{$t("header.component.order")}}</li>
@@ -54,6 +58,9 @@
       return{
       }
     },
+    mounted(){
+
+    },
     methods:{
       onChangeLang(){
         this.changeLang(this.changeToTheContrary(this.langCode))
@@ -75,6 +82,14 @@
       },
       goReg(){
         this.$router.push({path:'/reg'})
+      },
+      handleTouxiang(){
+        if (this.userInfo.touxiang){
+          let str = this.userInfo.touxiang
+          return 'http://localhost:3030' + str.slice(6,str.length)
+        } else {
+          return ""
+        }
       },
       ...mapActions(["changeLang","userLogout"])
     },

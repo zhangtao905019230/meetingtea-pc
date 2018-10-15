@@ -2,9 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import home from './../view/home'
+
 import login from './../view/login'
 import reg from './../view/register'
 import main from './../view/main'
+import productDetails from './../view/product-details'
 
 import teaCultureMuseum from './../view/tea-culture-museum'
 import other from './../view/other'
@@ -37,6 +39,14 @@ const router = new Router({
           }
         },
         {
+          path: 'productDetails',
+          name: 'productDetails',
+          component: productDetails,
+          meta: {
+            title: '遇茶-商品详情页'
+          }
+        },
+        {
           path: 'other',
           name:'other',
           component: other
@@ -59,6 +69,7 @@ const router = new Router({
         title: '遇茶-欢迎注册'
       }
     },
+
   ],
   // mode: 'history'
 })

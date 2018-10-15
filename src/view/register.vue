@@ -50,6 +50,21 @@
             <el-form-item prop="mailbox">
               <el-input v-model="ruleForm1.mailbox" placeholder="邮箱验证:请输入邮箱"></el-input>
             </el-form-item>
+            <el-form-item prop="touxiang">
+              <el-upload
+                class="upload-demo"
+                action="/"
+                :http-request="httpRequest"
+                :on-success="success"
+                :file-list="fileList"
+                :before-remove="beforeRemove"
+                :on-exceed="onExceed"
+                :limit="1"
+                list-type="picture-card">
+                <i class="el-icon-plus"></i>
+                <el-input type="text" v-model="ruleForm1.touxiang" v-show="false"></el-input>
+              </el-upload>
+            </el-form-item>
             <el-form-item>
               <el-button @click="immediateRegistration('ruleForm1')">立即注册</el-button>
             </el-form-item>
@@ -83,7 +98,8 @@
           user_name:"",
           user_password:"",
           user_password_again:"",
-          mailbox:""
+          mailbox:"",
+          touxiang:""
         },
         rules1:{
           user_name:[
@@ -118,8 +134,10 @@
               },
               change:'blur'
             }
-          ]
-        }
+          ],
+          touxiang:[{required:true}]
+        },
+        fileList: []
       }
     },
     methods:{
@@ -130,7 +148,6 @@
           } else {
             return false;
           }
-          // this.activeSteps=2
         });
       },
       immediateRegistration(formName){
@@ -139,7 +156,8 @@
           phone_number:_this.ruleForm0.phone_number,
           user_name:_this.ruleForm1.user_name,
           user_password:_this.ruleForm1.user_password,
-          mailbox:_this.ruleForm1.mailbox
+          mailbox:_this.ruleForm1.mailbox,
+          touxiang:_this.ruleForm1.touxiang
         }
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -156,6 +174,35 @@
       },
       goLogin(){
         this.$router.push({path:'/login'})
+      },
+      success(val){
+        console.log(val)
+        this.ruleForm1.touxiang = val
+      },
+      httpRequest(val){
+        var formdata = new FormData();
+        formdata.append('file',val.file);
+        formdata.append('action','test');
+        aixos.post("http://localhost:3030/user/touxiang",formdata)
+          .then(res => {
+            // console.log(res)
+            if (res.data.success==true){
+              val.onSuccess(res.data.headPortraitPath)
+            }
+
+          })
+      },
+      beforeRemove(){
+        alert("还不支持删除")
+        return false
+      },
+      onExceed(files, fileList){
+        // console.log(files,fileList)
+        this.$message({
+          showClose: true,
+          message: '只能上传一张图片哦😅',
+          type: 'error'
+        });
       }
     },
     computed:{
