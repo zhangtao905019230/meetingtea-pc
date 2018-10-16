@@ -25,7 +25,7 @@
   }
   #floor-nav>.floor-nav-wrap>ul>li:hover{
     font-size:12px;
-    color: rgb(221,49,127);
+    color: var(--main-color);
     line-height: 36px;
     border-bottom: 1px solid #eaeaea;
     cursor: pointer;

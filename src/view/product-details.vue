@@ -1,12 +1,12 @@
 <style>
-
+  #product-details>.margin>.top{display: flex}
 </style>
 <template>
   <div id="product-details">
     <div class="margin">
       <div class="top">
-        <magnifier></magnifier>
-        <proinfo-main></proinfo-main>
+        <magnifier :image-preview="teaDetail.figure_img"></magnifier>
+        <proinfo-main :tea-detail="teaDetail"></proinfo-main>
       </div>
       <div class="bottom"></div>
     </div>
@@ -22,8 +22,14 @@
     },
     data(){
       return{
+        teaDetail:{
 
+        }
       }
+    },
+    mounted(){
+      console.log(this.$route.query)
+      this.teaDetail = this.$route.query
     }
   }
 </script>

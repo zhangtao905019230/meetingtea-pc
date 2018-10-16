@@ -33,7 +33,7 @@
     font-size: 14px;
     color: #333
     }
-  .category-list>.category-list-content>div>ul>li:hover{color: #ff6700}
+  .category-list>.category-list-content>div>ul>li:hover{color: var(--main-color)}
   .category-list>.category-list-content>div>ul>li>img{width: 40px;height: 40px;margin-right: 12px}
 </style>
 <template>
@@ -102,7 +102,7 @@
         this.activeLargeclass = Array(8).fill(false)
         this.activeLargeColor = Array(8).fill('rgba(0, 0, 0, 0)');
         this.activeLargeclass[index] = true;
-        this.activeLargeColor[index] = '#ff6700'
+        this.activeLargeColor[index] = 'var(--main-color)'
       },
       closeAllActiveLargeclass(){
         this.activeLargeclass = Array(8).fill(false)

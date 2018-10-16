@@ -2,6 +2,19 @@
   <router-view></router-view>
 </template>
 <style>
+  :root{
+    --main-color: #00aaee;
+    --main-bg: rgb(255, 255, 255);
+    --logo-border-color: rebeccapurple;
+
+    --header-height: 68px;
+    --content-padding: 10px 20px;
+
+    --base-line-height: 1.428571429;
+    --transition-duration: .35s;
+    --external-link: "external link";
+    --margin-top: calc(2vh + 20px);
+  }
   @font-face {
     font-family: 'iconfont';  /* project id 803857 */
     src: url('//at.alicdn.com/t/font_803857_0zi705rik4de.eot');
@@ -34,7 +47,7 @@
 
   .margin{margin: 0 auto;width: 1226px}
   .ul-li_a>li{color: #b0b0b0}
-  .ul-li_a>li:hover{cursor: pointer;color: #e64318}
+  .ul-li_a>li:hover{cursor: pointer;color: var(--main-color)}
   input{display: block;border: none}
   input[type="button"]{cursor: pointer;}
 </style>

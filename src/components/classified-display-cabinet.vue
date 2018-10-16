@@ -39,7 +39,7 @@
   .classified-display-cabinet>.margin>.box-hd>.top-link>.sideIcon{width: 8px;height: 22px;background-color: salmon;display: block;margin-right: 8px}
   .classified-display-cabinet>.margin>.box-hd>.more-link{color: black;font-size: 16px;margin-right: 2px;line-height: 58px}
   .classified-display-cabinet>.margin>.box-hd>.more-link>.icon-more{font-size: 20px;line-height: 58px}
-  .classified-display-cabinet>.margin>.box-hd>.more-link:hover{color: #ff6600;cursor: pointer}
+  .classified-display-cabinet>.margin>.box-hd>.more-link:hover{color: var(--main-color);cursor: pointer}
   .classified-display-cabinet>.margin>.box-bd{display: flex}
   .classified-display-cabinet>.margin>.box-bd>.box-bd-l>li{
     width: 234px;height: 300px;
@@ -92,7 +92,7 @@
     transition-timing-function: linear;
     transition-delay: 0s;
     width: 174px;height: 59px;
-    background-color: #ff6700;
+    background-color: var(--main-color);
     display: flex;
     flex-direction: column;
     padding: 8px 30px 8px 30px;
@@ -129,7 +129,7 @@
           </li>
         </ul>
         <ul class="box-bd-r">
-          <li v-for="(teaDetail,index) of teaDetailsHandle" style="overflow: hidden">
+          <li v-for="(teaDetail,index) of teaDetailsHandle" style="overflow: hidden" @click="goProductDetails(teaDetail)">
             <div class="saleoff" :style='{"background-color": teaDetail.saleoffBgc}'>{{teaDetail.saleoff}}</div>
             <div
               class="figure"
@@ -142,7 +142,7 @@
             <p>{{teaDetail.title}}</p>
             <div class="desc">{{teaDetail.desc}}</div>
             <p>
-              <span style="color: #ff6700">￥{{teaDetail.price}}</span>
+              <span style="color: var(--main-color)">￥{{teaDetail.price}}</span>
               <span style="color: #b0b0b0;text-decoration: line-through">￥{{teaDetail.no_discount_price}}</span>
             </p>
 
@@ -245,6 +245,9 @@
         }
         let obj = { '1':"rgb(50,131,226)", '2':"rgb(225,49,47)", '3':"rgb(120,188,69)" }
         return obj[ val.saleoff_type]
+      },
+      goProductDetails(teaDetail){
+        this.$router.push({path:'/main/productDetails',query:teaDetail})
       }
     }
   }

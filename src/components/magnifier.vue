@@ -14,24 +14,24 @@
 <template>
   <div class="magnifier">
     <div class="top">
-      <img width="360" height="360" src="https://image.suning.cn/uimg/b2c/newcatentries/0000000000-000000000187296479_4.jpg_800w_800h_4e" alt="">
+      <img width="360" height="360" :src="imagePreview" alt="">
     </div>
     <div class="bottom">
       <ul>
         <li>
-          <img src="https://image.suning.cn/uimg/b2c/newcatentries/0000000000-000000000187296479_4.jpg_60w_60h_4e" alt="">
+          <img width="60" :src="imagePreview" alt="">
         </li>
         <li>
-          <img src="https://image.suning.cn/uimg/b2c/newcatentries/0000000000-000000000187296479_4.jpg_60w_60h_4e" alt="">
+          <img width="60" :src="imagePreview" alt="">
         </li>
         <li>
-          <img src="https://image.suning.cn/uimg/b2c/newcatentries/0000000000-000000000187296479_4.jpg_60w_60h_4e" alt="">
+          <img width="60" :src="imagePreview" alt="">
         </li>
         <li>
-          <img src="https://image.suning.cn/uimg/b2c/newcatentries/0000000000-000000000187296479_4.jpg_60w_60h_4e" alt="">
+          <img width="60" :src="imagePreview" alt="">
         </li>
         <li>
-          <img src="https://image.suning.cn/uimg/b2c/newcatentries/0000000000-000000000187296479_4.jpg_60w_60h_4e" alt="">
+          <img width="60" :src="imagePreview" alt="">
         </li>
       </ul>
     </div>
@@ -43,6 +43,7 @@
       return{
 
       }
-    }
+    },
+    props:['imagePreview']
   }
 </script>

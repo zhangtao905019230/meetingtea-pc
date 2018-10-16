@@ -19,17 +19,17 @@
     background-color: #fff
   }
   .logo-and-search-component>.margin>.search>.ul-li_a{display: flex;font-size: 12px;margin-top: 10px;color: #999}
-  .logo-and-search-component>.margin>.search>.ul-li_a:hover{color: #ff3600}
+  .logo-and-search-component>.margin>.search>.ul-li_a:hover{color: var(--main-color)}
   .logo-and-search-component>.margin>.search>.ul-li_a>li{margin-right: 20px}
-  .logo-and-search-component>.margin>.search>.ul-li_a>li:nth-child(1){color: #ff3600}
+  .logo-and-search-component>.margin>.search>.ul-li_a>li:nth-child(1){color: var(--main-color)}
   .logo-and-search-component>.margin>.tea-culture-museum-btn{
     margin-left: 280px;
     /*background-color: #5daf34;*/
-    border: 1px solid rgb(245,74,38);
+    border: 1px solid var(--main-color);
     line-height: 28px;height: 28px;
     padding: 0 28px 0 28px;
     border-radius: 25.5px;
-    color: rgb(245,74,38);
+    color: var(--main-color);
     font-size: 16px;
     /*width: 135px;*/
     height: 51px;
@@ -73,8 +73,8 @@
         this.$refs.searchBtn.style.borderLeft = "none"
       },
       txtFocus(){
-        this.$refs.searchTxt.style.border = "1px solid #ff3600";
-        this.$refs.searchBtn.style.border="1px solid #ff3600";
+        this.$refs.searchTxt.style.border = "1px solid var(--main-color)";
+        this.$refs.searchBtn.style.border="1px solid var(--main-color)";
         this.$refs.searchBtn.style.borderLeft = "none"
       },
       btnMouseleave(){
@@ -87,10 +87,10 @@
         this.$refs.searchBtn.style.borderLeft = "none"
       },
       btnMouseover(){
-        this.$refs.searchTxt.style.border = "1px solid #ff3600";
-        this.$refs.searchBtn.style.border="1px solid #ff3600";
-        this.$refs.searchBtn.style.backgroundColor = "#ff3600"
-        this.$refs.searchBtn.style.border="1px solid #ff3600";
+        this.$refs.searchTxt.style.border = "1px solid var(--main-color)";
+        this.$refs.searchBtn.style.border="1px solid var(--main-color)";
+        this.$refs.searchBtn.style.backgroundColor = "var(--main-color)"
+        this.$refs.searchBtn.style.border="1px solid var(--main-color)";
         this.$refs.searchBtn.style.backgroundImage = "url('/static/special-pictures/icon-search-s.png')"
         this.$refs.searchBtn.style.borderLeft = "none"
       },

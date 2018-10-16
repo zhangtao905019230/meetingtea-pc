@@ -7,6 +7,7 @@ import login from './../view/login'
 import reg from './../view/register'
 import main from './../view/main'
 import productDetails from './../view/product-details'
+import shoppingCart from './../view/shopping-cart'
 
 import teaCultureMuseum from './../view/tea-culture-museum'
 import other from './../view/other'
@@ -44,6 +45,14 @@ const router = new Router({
           component: productDetails,
           meta: {
             title: '遇茶-商品详情页'
+          }
+        },
+        {
+          path: 'shoppingCart',
+          name: 'shoppingCart',
+          component: shoppingCart,
+          meta: {
+            title: '遇茶-购物车'
           }
         },
         {

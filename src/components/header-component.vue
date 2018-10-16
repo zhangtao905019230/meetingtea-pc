@@ -6,13 +6,13 @@
   header>.margin>.r>ul{height: 40px;display: flex}
   header>.margin>.r>ul>li{margin-right: 32px}
   header>.margin>.r>ul>li.touxiang{width: 40px;height: 40px;overflow: hidden;border-radius: 50%}
-  header>.margin>.cart-btn{height: 40px;padding-right: 24px; display: block;display: flex;background-color: #ff3600;overflow: hidden}
+  header>.margin>.cart-btn{height: 40px;padding-right: 24px; display: block;display: flex;background-color: var(--main-color);overflow: hidden}
   header>.margin>.cart-btn>.img-wrap{transform: translateY(0);transition: .2s}
   header>.margin>.cart-btn:hover>.img-wrap{transform: translateY(-30px)}
   header>.margin>.cart-btn:hover{background-color:#ccc}
-  header>.margin>.cart-btn:hover>input{background-color: #ccc;color: #ff3600}
+  header>.margin>.cart-btn:hover>input{background-color: #ccc;color: var(--main-color)}
   header>.margin>.cart-btn>.img-wrap>img{display: block;width: 20px;margin: 10px}
-  header>.margin>.cart-btn>input{background-color: #ff3600;font-size: 16px;color: #fff;}
+  header>.margin>.cart-btn>input{background-color: var(--main-color);font-size: 16px;color: #fff;}
 
 </style>
 <template>
@@ -45,7 +45,7 @@
           <img src="./../assets/images/cart2.png" alt="">
           <img src="./../assets/images/cart1.png" alt="">
         </div>
-        <input type="button" :value="$t('header.component.cart')">
+        <input @click="goShoppingCart" type="button" :value="$t('header.component.cart')">
       </div>
     </div>
   </header>
@@ -90,6 +90,9 @@
         } else {
           return ""
         }
+      },
+      goShoppingCart(){
+        this.$router.push({path:'shoppingCart'})
       },
       ...mapActions(["changeLang","userLogout"])
     },
