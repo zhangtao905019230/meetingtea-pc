@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 
+import Utils from './common/utils'
+
 // Import Vue.js core libraries
 import router from './router'
 import store from './store'
@@ -10,6 +12,7 @@ import store from './store'
 // Import element-ui library
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+// Import Internationalization
 import VueI18n from 'vue-i18n'
 import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
@@ -30,14 +33,8 @@ const messages = {
 }
 
 // Set up webpage language
-let langCode = ""
-if (localStorage.langCode) {
-  langCode = localStorage.langCode
-} else {
-  langCode = navigator.language||navigator.userLanguage;//常规浏览器语言和IE浏览器
-  langCode = langCode.substr(0, 2);
-  localStorage.langCode = langCode
-}
+Utils.setUpWebpageLanguage()
+
 // Create VueI18n instance with options
 const i18n = new VueI18n({
   locale: localStorage.langCode, // set locale
@@ -55,7 +52,7 @@ Vue.prototype.phpStaticFilePath = 'http://101.132.46.146:8080'
 
 Vue.config.productionTip = false
 
-store.dispatch('checkLogin',{next:function next(){console.log(1)},dataInterface:process.env.API_ROOT,tips:false})
+store.dispatch('checkLogin',{next:function next(){},dataInterface:process.env.API_ROOT,tips:false})
 
 router.beforeEach((to, from, next) => {
   store.dispatch('checkPath',{name:to.name})

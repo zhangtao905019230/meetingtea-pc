@@ -44,9 +44,9 @@
     -webkit-align-items: center;
     align-items: center;
   }
-  .banner-component>.margin .swiper-slide:nth-child(1){background-image: url("./../assets/images/banner/banner0/main.jpeg")}
-  .banner-component>.margin .swiper-slide:nth-child(2){background-image: url("./../assets/images/banner/banner0/main.jpeg")}
-  .banner-component>.margin .swiper-slide:nth-child(3){background-image: url("./../assets/images/banner/banner0/main.jpeg")}
+  .banner-component>.margin .swiper-slide:nth-child(1){background-image: url("../assets/images/banner/banner0/main.jpeg")}
+  .banner-component>.margin .swiper-slide:nth-child(2){background-image: url("../assets/images/banner/banner0/main.jpeg")}
+  .banner-component>.margin .swiper-slide:nth-child(3){background-image: url("../assets/images/banner/banner0/main.jpeg")}
   .banner-component>.margin .swiper-pagination{top: 90%;left: 50%}
   .banner-component>.margin .swiper-pagination span{margin: 10px}
   .banner-component>.margin .swiper-button-prev{left: 15px}
@@ -63,22 +63,22 @@
           <div class="swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide" style="position: relative">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
               </div>
               <div class="swiper-slide" style="position: relative">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
               </div>
               <div class="swiper-slide" style="position: relative">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
-                <img style="position: absolute" src="./../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c0.png" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c2.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.6s">
+                <img style="position: absolute" src="../assets/images/banner/banner0/c3.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@
 </template>
 <script>
   import Swiper from 'swiper'
-  import ThreeD from './../components/threeD'
+  import ThreeD from '../widget/threeD'
   export default {
     components:{
       'threeD':ThreeD

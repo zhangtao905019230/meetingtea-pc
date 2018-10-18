@@ -16,7 +16,7 @@
 
 </style>
 <template>
-  <header>
+  <header style="display: none">
     <div class="margin">
       <div class="l">
         <ul class="ul-li_a">
@@ -30,7 +30,7 @@
           <li @click="goTo('/login')" v-show="loginLogoutRegisterBtnStatus[0]">{{$t("header.component.login")}}</li>
           <li @click="goReg" v-show="loginLogoutRegisterBtnStatus[2]">{{$t("header.component.register")}}</li>
           <li class="touxiang">
-            <img height="40" :src="handleTouxiang()" alt="">
+            <!--<img height="40" :src="handleTouxiang()" alt="">-->
           </li>
           <li v-show="loginLogoutRegisterBtnStatus[1]">{{$t("header.component.welcome")}}{{userInfo.user_name}}</li>
           <li @click="logout" v-show="loginLogoutRegisterBtnStatus[1]">{{$t("header.component.logout")}}</li>
@@ -42,8 +42,8 @@
       </div>
       <div class="cart-btn">
         <div class="img-wrap">
-          <img src="./../assets/images/cart2.png" alt="">
-          <img src="./../assets/images/cart1.png" alt="">
+          <img src="../assets/images/cart2.png" alt="">
+          <img src="../assets/images/cart1.png" alt="">
         </div>
         <input @click="goShoppingCart" type="button" :value="$t('header.component.cart')">
       </div>

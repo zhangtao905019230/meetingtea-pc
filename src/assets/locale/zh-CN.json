@@ -25,5 +25,16 @@
   "login.password.placeholder": "密码",
   "login.weixin": "微信",
   "login.immediate.registration":"立即注册",
-  "reg.welcome.reg":"欢迎注册"
+  "reg.welcome.reg":"欢迎注册",
+  "site.nav.welcome":"嗨，欢迎来遇茶",
+  "site.nav.please.login":"请登录",
+  "site.nav.reg":"免费注册",
+  "site.nav.my.meetingtea":"我的遇茶",
+  "site.nav.already.bought":"已买到的宝贝",
+  "site.nav.already.sold":"已卖出的宝贝",
+  "site.nav.shopping.cart":"购物车",
+  "site.nav.shopping.piece":"件",
+  "site.nav.favorite":"收藏夹",
+  "site.nav.favorite.goods":"收藏的宝贝",
+  "site.nav.favorite.shops":"收藏的店铺"
 }

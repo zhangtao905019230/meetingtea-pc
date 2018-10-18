@@ -1,19 +1,36 @@
 <style>
-  .category-list{height: 60px;width:234px;position: relative;z-index: 100;box-sizing: border-box}
-  .category-list>.category-list-title{
-    width: 234px;height: 60px;
-    font-size:16px;
-    line-height:60px;
-    display: block;
+  #category-type{
+    border-bottom: 2px solid var(--main-color);
+    height: 36px
   }
-  .category-list:hover .category-list-content{display: flex}
-  .category-list>.category-list-content{display: none;font-size: 16px;position: absolute;top: 60px;left: 0;}
-  .category-list>.category-list-content.is-show-category-list-content{display: flex}
-  .category-list>.category-list-content>ul{background-color: rgba(0, 0, 0, 0.6);padding: 20px 0 20px 0;}
-  .category-list>.category-list-content>ul>li{width: 204px;line-height: 52.5px;padding-left: 30px;color: #fff}
-  .category-list>.category-list-content>div{height: 460px;}
-  .category-list>.category-list-content>div>ul{
+  #category-type>.margin{
+    position: relative;
+    z-index: 1000
+  }
 
+  .ct-title{
+    width: 234px;
+    height: 36px;
+    font-size:16px;
+    line-height:36px;
+    display: block;
+    background-color: var(--main-color);
+    color: white;
+  }
+
+  .ct-content{
+    display: flex;
+    font-size: 16px;
+    position: absolute;
+    top: 38px;
+    left: 0;
+  }
+
+  .ct-content>ul{background-color: rgba(0, 0, 0, 0.6);padding: 20px 0 20px 0;}
+  .ct-content>ul>li{width: 204px;line-height: 52.5px;padding-left: 30px;color: #fff;cursor: pointer}
+
+  .ct-content>div{height: 460px;}
+  .ct-content>div>ul{
     border: 1px solid #e0e0e0;
     border-left: 0;
     box-shadow: 0 8px 16px rgba(0,0,0,0.18);
@@ -24,7 +41,7 @@
     align-content: flex-start;
     background-color: #fff
   }
-  .category-list>.category-list-content>div>ul>li{
+  .ct-content>div>ul>li{
     width: 245px;
     height: 76px;
     display: flex;
@@ -33,53 +50,52 @@
     font-size: 14px;
     color: #333
     }
-  .category-list>.category-list-content>div>ul>li:hover{color: var(--main-color)}
-  .category-list>.category-list-content>div>ul>li>img{width: 40px;height: 40px;margin-right: 12px}
+  .ct-content>div>ul>li:hover{color: var(--main-color)}
+  .ct-content>div>ul>li>img{width: 40px;height: 40px;margin-right: 12px}
 </style>
 <template>
-  <div class="margin">
-    <div class="category-list">
-      <span class="category-list-title">
-        <i class="iconfont icon-list" style="font-size: 18px"></i>
-        {{$t("category.list.all.product.categories")}}
+  <div id="category-type">
+    <div class="margin">
+      <span class="ct-title">
+        <i class="iconfont icon-list" style="font-size: 18px;padding: 0 10px"></i>
+        商品分类
       </span>
-      <div
-        @mouseleave="closeAllActiveLargeclass"
-        :class="{'category-list-content':categoryListContent,'is-show-category-list-content':isShowCategoryListContent}">
-        <ul class="ul-li_a">
-          <li
-            v-for="(largeclass,index) of largeclasses" :key="index"
-            @mousemove="triggerActiveLargeclass(index)"
-            :style="{'background-color': activeLargeColor[index],'display':'flex'}">
-            <span style="display: block;width: 170px">{{$t(largeclass)}}</span>
-            <i class="iconfont icon-right" style="font-size: 18px"></i>
-          </li>
-        </ul>
-        <div>
-          <ul
-            class="ul-li_a"
-            :style="{'width':activeLargeclassWidth[index]}"
-            v-for="(largeclass,index) of largeclasses"
-            :key="index"
-            v-show="activeLargeclass[index]"
-            @mouseleave="closeAllActiveLargeclass">
+        <div
+          @mouseleave="closeAllActiveLargeclass"
+          class="ct-content">
+          <ul>
             <li
-              v-for="(virtualData,index) of virtualDatas"
-              :key="index"
-              v-if="largeclass==virtualData.class_id.slice(0,2)">
-              <img :src="phpStaticFilePath+'/elfinder/files/zhangtao25/pc/category-list/'+virtualData.largeclass+'-'+virtualData.smallclass_img" alt="">
-              <span>{{$t(virtualData.class_id)}}</span>
+              v-for="(largeclass,index) of largeclasses" :key="index"
+              @mousemove="triggerActiveLargeclass(index)"
+              :style="{'background-color': activeLargeColor[index],'display':'flex'}">
+              <span style="display: block;width: 170px">{{$t(largeclass)}}</span>
+              <i class="iconfont icon-right" style="font-size: 18px"></i>
             </li>
           </ul>
+          <div>
+            <ul
+              :style="{'width':activeLargeclassWidth[index]}"
+              v-for="(largeclass,index) of largeclasses"
+              :key="index"
+              v-show="activeLargeclass[index]"
+              @mouseleave="closeAllActiveLargeclass">
+              <li
+                v-for="(virtualData,index) of virtualDatas"
+                :key="index"
+                v-if="largeclass==virtualData.class_id.slice(0,2)">
+                <img :src="phpStaticFilePath+'/elfinder/files/zhangtao25/pc/category-list/'+virtualData.largeclass+'-'+virtualData.smallclass_img" alt="">
+                <span>{{$t(virtualData.class_id)}}</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 <script>
   import {mapGetters} from 'vuex'
 
-  import GetGoodsInfor from './../service/get-goods-infor'
+  import GetGoodsInfor from '../service/get-goods-infor'
   export default {
     data(){
       return{
@@ -88,7 +104,7 @@
         phpStaticFilePath:this.phpStaticFilePath,
         activeLargeclass: Array(8).fill(false),
         activeLargeColor:Array(8).fill('rgba(0, 0, 0, 0)'),
-        categoryListContent: true
+        ctContent: true
       }
     },
     mounted(){

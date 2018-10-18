@@ -1,16 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import home from './../view/home'
+import home from '../view/main/home'
 
 import login from './../view/login'
 import reg from './../view/register'
 import main from './../view/main'
-import productDetails from './../view/product-details'
-import shoppingCart from './../view/shopping-cart'
+import productDetails from '../view/main/product-details'
+import shoppingCart from '../view/main/shopping-cart'
 
-import teaCultureMuseum from './../view/tea-culture-museum'
-import other from './../view/other'
+import teaCultureMuseum from '../view/main/tea-culture-museum'
 
 Vue.use(Router)
 
@@ -54,12 +53,7 @@ const router = new Router({
           meta: {
             title: '遇茶-购物车'
           }
-        },
-        {
-          path: 'other',
-          name:'other',
-          component: other
-        },
+        }
       ]
     },
     {

@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-  import SmallColorBlockTitle from './../components/small-color-block-title'
+  import SmallColorBlockTitle from './small-color-block-title'
   export default {
     components:{
       'small-color-block-title': SmallColorBlockTitle

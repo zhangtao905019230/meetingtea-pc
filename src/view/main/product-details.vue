@@ -13,8 +13,8 @@
   </div>
 </template>
 <script>
-  import Magnifier from './../components/magnifier'
-  import ProinfoMain from './../components/proinfo-main'
+  import Magnifier from '../../widget/magnifier'
+  import ProinfoMain from '../../widget/proinfo-main'
   export default {
     components:{
       'magnifier': Magnifier,

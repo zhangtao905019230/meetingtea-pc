@@ -108,7 +108,7 @@
   </div>
 </template>
 <script>
-  import End from './../components/end'
+  import End from '../widget/end'
   import UserInfo from './../service/user-info'
   import {mapActions,mapGetters} from 'vuex'
   export default {

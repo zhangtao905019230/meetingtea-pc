@@ -1,23 +1,23 @@
 <template>
   <div id="main">
+    <site-nav></site-nav>
     <header-component></header-component>
-    <logo-and-search-component></logo-and-search-component>
-    <category-list></category-list>
+    <category-type></category-type>
     <router-view></router-view>
     <end></end>
   </div>
 </template>
 <script>
-  import HeaderComponent from "./../components/header-component"
-  import End from "./../components/end"
-  import LogoAndSearchComponent from "./../components/logo-and-search-component"
-  import CategoryList from "./../components/category-list"
+  import SiteNav from './../widget/site-nav'
+  import HeaderComponent from "../widget/header-component"
+  import End from "../widget/end"
+  import CategoryType from "../widget/category-type"
   export default {
     components:{
+      'site-nav': SiteNav,
       'header-component': HeaderComponent,
+      'category-type':CategoryType,
       'end': End,
-      'logo-and-search-component': LogoAndSearchComponent,
-      'category-list': CategoryList,
     }
   }
 </script>

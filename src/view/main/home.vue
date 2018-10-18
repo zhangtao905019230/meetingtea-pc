@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <floor-nav></floor-nav>
-    <banner-component></banner-component>
+    <banner></banner>
     <four-small-banners></four-small-banners>
     <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>
     <classified-display-cabinet tea-largeclass="01" :tea-details="teaDetails[1]" :comment="comment"></classified-display-cabinet>
@@ -14,21 +14,21 @@
   </div>
 </template>
 <script>
-  import HeaderComponent from "./../components/header-component"
-  import LogoAndSearchComponent from "./../components/logo-and-search-component"
-  import CategoryList from "./../components/category-list"
-  import BannerComponent from "./../components/banner-component"
-  import ClassifiedDisplayCabinet from "./../components/classified-display-cabinet"
-  import FourSmallBanners from "./../components/four-small-banners"
-  import FloorNav from "./../components/floor-nav"
-  import GetGoodsInfor from "../service/get-goods-infor"
+  import HeaderComponentX from "../../del/header-component-x"
+  import LogoAndSearchComponent from "../../del/logo-and-search-component"
+  import BannerComponent from "../../del/banner-component"
+  import Banner from './../../widget/banner'
+  import ClassifiedDisplayCabinet from "../../widget/classified-display-cabinet"
+  import FourSmallBanners from "../../widget/four-small-banners"
+  import FloorNav from "../../widget/floor-nav"
+  import GetGoodsInfor from "../../service/get-goods-infor"
 
   export default {
     components: {
-      'header-component': HeaderComponent,
+      'header-component-x': HeaderComponentX,
       'logo-and-search-component': LogoAndSearchComponent,
-      'category-list': CategoryList,
       'banner-component': BannerComponent,
+      'banner': Banner,
       'classified-display-cabinet': ClassifiedDisplayCabinet,
       'four-small-banners': FourSmallBanners,
       'floor-nav': FloorNav

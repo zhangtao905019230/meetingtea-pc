@@ -3,7 +3,7 @@
 </template>
 <style>
   :root{
-    --main-color: #00aaee;
+    --main-color: #ff0036;
     --main-bg: rgb(255, 255, 255);
     --logo-border-color: rebeccapurple;
 
@@ -50,4 +50,21 @@
   .ul-li_a>li:hover{cursor: pointer;color: var(--main-color)}
   input{display: block;border: none}
   input[type="button"]{cursor: pointer;}
+
+  a{color: #999}
+  a:hover{color: var(--main-color)}
+
+  b.rotating-arrowhead{
+    position: absolute;
+    top: 45%;
+    right: 6px;
+    border-width: 3px;
+    border-style: solid dashed dashed;
+    border-color: #bbb transparent transparent;
+  }
+  .rotating-arrowhead-par:hover b.rotating-arrowhead{
+    transform-origin: 50% 25%;
+    transition: 0.3s;
+    transform: rotate(180deg)
+  }
 </style>

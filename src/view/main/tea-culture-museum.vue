@@ -10,7 +10,7 @@
 </template>
 <script>
 
-  import accordion from './../components/accordion'
+  import accordion from '../../widget/accordion'
   export default {
     components:{
       'accordion': accordion

@@ -25,5 +25,16 @@
   "login.password.placeholder": "password",
   "login.weixin": "WeChat",
   "login.immediate.registration":"Register",
-  "reg.welcome.reg":"Welcome to registration"
+  "reg.welcome.reg":"Welcome to registration",
+  "site.nav.welcome":"Hi,Welcome to meetingtea",
+  "site.nav.please.login":"Please login",
+  "site.nav.reg":"Free registration",
+  "site.nav.my.meetingtea":"My meetingtea",
+  "site.nav.already.bought":"Already bought",
+  "site.nav.already.sold":"Already sold",
+  "site.nav.shopping.cart":"Shopping cart",
+  "site.nav.shopping.piece":"pieces",
+  "site.nav.favorite":"Favorite",
+  "site.nav.favorite.goods":"Favorite goods",
+  "site.nav.favorite.shops":"Favorite shops"
 }
