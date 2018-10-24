@@ -5,155 +5,127 @@
   }
   #category-type>.margin{
     position: relative;
-    z-index: 1000
+    z-index: 1000;
+    height: 38px;
   }
-
   .ct-title{
     width: 234px;
-    height: 36px;
+    height: 38px;
     font-size:16px;
     line-height:36px;
     display: block;
     background-color: var(--main-color);
     color: white;
   }
+  .ct-title>.iconfont{font-size: 18px;padding: 0 10px}
 
   .ct-content{
-    display: flex;
+    height: 460px;
+    width: 234px;
+    background-color: rgba(0,0,0,.5);
+  }
+  .ct-content>.largeclass-ul{
+    padding: 20px 0;
+  }
+  .ct-content>.largeclass-ul>li{
+    width: 234px;
+    height: 52.5px;
+    color: white;
+    line-height: 52.5px;
     font-size: 16px;
+  }
+  .ct-content>.largeclass-ul>li:hover{
+    background-color: var(--main-color);
+    cursor: pointer;
+  }
+
+  .ct-content>.smallclass-ul{
+    width: 992px;
+    height: 420px;
+    background-color: white;
     position: absolute;
     top: 38px;
-    left: 0;
-  }
-
-  .ct-content>ul{background-color: rgba(0, 0, 0, 0.6);padding: 20px 0 20px 0;}
-  .ct-content>ul>li{width: 204px;line-height: 52.5px;padding-left: 30px;color: #fff;cursor: pointer}
-
-  .ct-content>div{height: 460px;}
-  .ct-content>div>ul{
-    border: 1px solid #e0e0e0;
-    border-left: 0;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.18);
-    height: 460px;
+    left: 234px;
+    padding: 20px 0;
     display: flex;
-    flex-wrap:wrap;
     flex-direction: column;
+    flex-wrap:wrap;
     align-content: flex-start;
-    background-color: #fff
   }
-  .ct-content>div>ul>li{
-    width: 245px;
-    height: 76px;
+  .ct-content>.smallclass-ul>li{
+    background-color: white;
+    padding-left: 20px;
+    height: 60px;width: 228px;
+    font-size: 14px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
-    font-size: 14px;
-    color: #333
-    }
-  .ct-content>div>ul>li:hover{color: var(--main-color)}
-  .ct-content>div>ul>li>img{width: 40px;height: 40px;margin-right: 12px}
+  }
+  .ct-content>.smallclass-ul>li>img{
+    width: 40px;height: 40px;
+    margin-right: 20px
+  }
 </style>
 <template>
   <div id="category-type">
     <div class="margin">
       <span class="ct-title">
-        <i class="iconfont icon-list" style="font-size: 18px;padding: 0 10px"></i>
+        <i class="iconfont icon-list"></i>
         商品分类
       </span>
-        <div
-          @mouseleave="closeAllActiveLargeclass"
-          class="ct-content">
-          <ul>
-            <li
-              v-for="(largeclass,index) of largeclasses" :key="index"
-              @mousemove="triggerActiveLargeclass(index)"
-              :style="{'background-color': activeLargeColor[index],'display':'flex'}">
-              <span style="display: block;width: 170px">{{$t(largeclass)}}</span>
-              <i class="iconfont icon-right" style="font-size: 18px"></i>
-            </li>
-          </ul>
-          <div>
-            <ul
-              :style="{'width':activeLargeclassWidth[index]}"
-              v-for="(largeclass,index) of largeclasses"
-              :key="index"
-              v-show="activeLargeclass[index]"
-              @mouseleave="closeAllActiveLargeclass">
-              <li
-                v-for="(virtualData,index) of virtualDatas"
-                :key="index"
-                v-if="largeclass==virtualData.class_id.slice(0,2)">
-                <img :src="phpStaticFilePath+'/elfinder/files/zhangtao25/pc/category-list/'+virtualData.largeclass+'-'+virtualData.smallclass_img" alt="">
-                <span>{{$t(virtualData.class_id)}}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div class="ct-content">
+        <ul class="largeclass-ul">
+          <li
+            v-for="(largeclass,index) of largeclasses"
+            :key="index"
+            @mousemove="changeLargeclass(largeclass,index)"
+            @mouseleave="mouseleaveCtContent">
+            {{$t(largeclass)}}
+          </li>
+        </ul>
+        <ul
+          class="smallclass-ul"
+          :style="{display:smallclassUlState}"
+          @mouseenter="mouseenterSmallclassUl"
+          @mouseleave="mouseleaveCtContent">
+          <li v-for="(smallclass,index) of smallclasses[activeIndex]" :key="index">
+            <img src="https://img1.zuipin.cn/new_pc/%E5%AF%BC%E8%88%AA%E6%A0%8F%E4%B8%89%E7%BA%A7%E5%88%86%E7%B1%BB/%E5%AE%89%E6%BA%AA%E9%93%81%E8%A7%82%E9%9F%B3.jpg" alt="">
+            <span>{{$t(smallclass)}}</span>
+          </li>
+        </ul>
       </div>
+    </div>
   </div>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
-
-  import GetGoodsInfor from '../service/get-goods-infor'
   export default {
     data(){
       return{
-        largeclasses: ["00","01","02","03","04","05","06","07"],
-        virtualDatas:[],
-        phpStaticFilePath:this.phpStaticFilePath,
-        activeLargeclass: Array(8).fill(false),
-        activeLargeColor:Array(8).fill('rgba(0, 0, 0, 0)'),
-        ctContent: true
+        smallclassUlState:'none',
+        activeIndex:'01',
+        largeclasses:['00','01','02','03','04','05','06','07'],
+        smallclasses:{
+          '00':['0000','0001','0000','0001','0000','0001','0000','0001','0000','0001','0000','0001','0000','0001','0000','0001','0000','0001'],
+          '01':['0100','0101'],
+          '02':['0200','0201'],
+          '03':['0300','0301'],
+          '04':['0400','0401'],
+          '05':['0500','0501'],
+          '06':['0600','0601'],
+          '07':['0700','0701']
+        }
       }
-    },
-    mounted(){
-      GetGoodsInfor.GetAllTypesOfTea(this)
-        .then(res=>{
-          this.virtualDatas = res
-        })
     },
     methods:{
-      triggerActiveLargeclass(index){
-        this.activeLargeclass = Array(8).fill(false)
-        this.activeLargeColor = Array(8).fill('rgba(0, 0, 0, 0)');
-        this.activeLargeclass[index] = true;
-        this.activeLargeColor[index] = 'var(--main-color)'
+      changeLargeclass(largeclass,index){
+        this.smallclassUlState = 'flex'
+        this.activeIndex = largeclass
       },
-      closeAllActiveLargeclass(){
-        this.activeLargeclass = Array(8).fill(false)
-        this.activeLargeColor = Array(8).fill('rgba(0, 0, 0, 0)');
+      mouseleaveCtContent(){
+        this.smallclassUlState = 'none'
+      },
+      mouseenterSmallclassUl(){
+        this.smallclassUlState = 'flex'
       }
-    },
-    computed:{
-      activeLargeclassWidth(){
-        let datashuliang = Array(8).fill(0)
-        for(let i in this.virtualDatas){
-          if(this.virtualDatas[i]['class_id'].slice(0,2) == "00"){
-            datashuliang[0]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "01"){
-            datashuliang[1]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "02"){
-            datashuliang[2]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "03"){
-            datashuliang[3]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "04"){
-            datashuliang[4]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "05"){
-            datashuliang[5]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "06"){
-            datashuliang[6]++
-          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "07"){
-            datashuliang[7]++
-          }else{}
-        }
-        let activeLargeclassWidth = []
-        for(let i in datashuliang){
-          activeLargeclassWidth.push(Math.ceil(datashuliang[i]/6)*245+'px')
-        }
-        return activeLargeclassWidth
-      },
-      ...mapGetters(["langCode","isShowCategoryListContent"])
     }
   }
 </script>

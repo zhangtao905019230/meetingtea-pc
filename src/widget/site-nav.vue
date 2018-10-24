@@ -111,16 +111,33 @@
             <a class="underline">{{$t("site.nav.favorite.shops")}}</a>
           </div>
         </div>
+
+        <div class="sn-favorite rotating-arrowhead-par">
+          <a class="menu-hd underline">
+            {{$t("site.nav.language.state")}}
+            <b class="rotating-arrowhead"></b>
+          </a>
+          <div class="menu-bd">
+            <a class="underline" @click="onChangeLang('zh')">中文</a>
+            <a class="underline" @click="onChangeLang('en')">English</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+  import {mapActions} from 'vuex'
   export default {
     methods:{
       goTo(path){
         this.$router.push({path})
-      }
+      },
+      onChangeLang(val){
+        this.changeLang(val)
+        window.location.reload()
+      },
+      ...mapActions(["changeLang","userLogout"])
     }
   }
 </script>

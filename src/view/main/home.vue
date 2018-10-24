@@ -14,9 +14,6 @@
   </div>
 </template>
 <script>
-  import HeaderComponentX from "../../del/header-component-x"
-  import LogoAndSearchComponent from "../../del/logo-and-search-component"
-  import BannerComponent from "../../del/banner-component"
   import Banner from './../../widget/banner'
   import ClassifiedDisplayCabinet from "../../widget/classified-display-cabinet"
   import FourSmallBanners from "../../widget/four-small-banners"
@@ -25,9 +22,6 @@
 
   export default {
     components: {
-      'header-component-x': HeaderComponentX,
-      'logo-and-search-component': LogoAndSearchComponent,
-      'banner-component': BannerComponent,
       'banner': Banner,
       'classified-display-cabinet': ClassifiedDisplayCabinet,
       'four-small-banners': FourSmallBanners,

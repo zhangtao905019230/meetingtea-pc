@@ -41,6 +41,7 @@ function GetAllTypesOfTea() {
   return new Promise((resolve, reject) => {
     axios.get("/static/json/classification-of-tea.json")
       .then(res => {
+        console.log(res)
         resolve(res.data)
       })
       .catch(err=>{

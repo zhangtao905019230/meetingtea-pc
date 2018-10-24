@@ -7,7 +7,7 @@
   .hc-search>form>.searchTxt{
     width: 491px;height: 36px;
     border: 2px solid var(--main-color);
-    font-size: 16px;
+    font-size: 14px;
     text-indent: 10px;
   }
   .hc-search>form>.searchTxt:focus::placeholder{
