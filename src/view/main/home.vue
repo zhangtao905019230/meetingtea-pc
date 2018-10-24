@@ -1,6 +1,7 @@
 <template>
   <div id="home">
-    <floor-nav></floor-nav>
+    <!--<floor-nav></floor-nav>-->
+    <lift-nav></lift-nav>
     <banner></banner>
     <four-small-banners></four-small-banners>
     <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>
@@ -14,6 +15,7 @@
   </div>
 </template>
 <script>
+  import LiftNav from './../../widget/lift-nav'
   import Banner from './../../widget/banner'
   import ClassifiedDisplayCabinet from "../../widget/classified-display-cabinet"
   import FourSmallBanners from "../../widget/four-small-banners"
@@ -22,6 +24,7 @@
 
   export default {
     components: {
+      'lift-nav':LiftNav,
       'banner': Banner,
       'classified-display-cabinet': ClassifiedDisplayCabinet,
       'four-small-banners': FourSmallBanners,

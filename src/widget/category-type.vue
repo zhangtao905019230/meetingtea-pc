@@ -28,12 +28,14 @@
     padding: 20px 0;
   }
   .ct-content>.largeclass-ul>li{
-    width: 234px;
+    width: 214px;
     height: 52.5px;
     color: white;
     line-height: 52.5px;
     font-size: 16px;
+    padding-left: 20px;
   }
+  .ct-content>.largeclass-ul>li>.icon-right{margin-left: 140px}
   .ct-content>.largeclass-ul>li:hover{
     background-color: var(--main-color);
     cursor: pointer;
@@ -80,6 +82,7 @@
             @mousemove="changeLargeclass(largeclass,index)"
             @mouseleave="mouseleaveCtContent">
             {{$t(largeclass)}}
+            <i class="iconfont icon-right"></i>
           </li>
         </ul>
         <ul
@@ -88,7 +91,7 @@
           @mouseenter="mouseenterSmallclassUl"
           @mouseleave="mouseleaveCtContent">
           <li v-for="(smallclass,index) of smallclasses[activeIndex]" :key="index">
-            <img src="https://img1.zuipin.cn/new_pc/%E5%AF%BC%E8%88%AA%E6%A0%8F%E4%B8%89%E7%BA%A7%E5%88%86%E7%B1%BB/%E5%AE%89%E6%BA%AA%E9%93%81%E8%A7%82%E9%9F%B3.jpg" alt="">
+            <img src="http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/xiaotu.jpg" alt="">
             <span>{{$t(smallclass)}}</span>
           </li>
         </ul>

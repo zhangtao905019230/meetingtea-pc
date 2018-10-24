@@ -27,10 +27,10 @@
       <!-- Swiper -->
       <div class="swiper-container banner-swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" style="background-image:url(https://img2.zuipin.cn/new_pc/%E9%A6%96%E9%A1%B5%E8%BD%AE%E6%92%ADpc%E7%AB%AF/20181008_10.8-10.22-%E9%87%8D%E9%98%B3%E8%8A%82%E6%B4%BB%E5%8A%A8-%E9%A6%96%E9%A1%B5%E8%BD%AE%E6%92%AD-f9f2e7.jpg)"></div>
-          <div class="swiper-slide" style="background-image:url(https://img2.zuipin.cn/new_pc/%E9%A6%96%E9%A1%B5%E8%BD%AE%E6%92%ADpc%E7%AB%AF/1-8702951%EF%BC%9Af9fbf9.jpg)"></div>
-          <div class="swiper-slide" style="background-image:url(https://img2.zuipin.cn/new_pc/%E9%A6%96%E9%A1%B5%E8%BD%AE%E6%92%ADpc%E7%AB%AF/4-8684606%EF%BC%9Af4ebce.jpg)"></div>
-          <div class="swiper-slide" style="background-image:url(https://img2.zuipin.cn/new_pc/%E9%A6%96%E9%A1%B5%E8%BD%AE%E6%92%ADpc%E7%AB%AF/3-8684481%EF%BC%9Afafaf9.jpg)"></div>
+          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner1.jpg)"></div>
+          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner2.jpg)"></div>
+          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner3.jpg)"></div>
+          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner4.jpg)"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination swiper-pagination-white"></div>
