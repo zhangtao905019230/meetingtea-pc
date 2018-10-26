@@ -5,9 +5,13 @@
     width: 315px;
     background-color: salmon;
     top: 0;
-    right: 0px;
+    right: -280px;
     display: flex;
     z-index: 1000;
+    transition: .5s;
+  }
+  #sidebar-component.active{
+    right: 0px;
   }
   .sc-tabs{
     width: 35px;
@@ -26,6 +30,7 @@
   }
   .sc-tabs>.head-portrait:hover{
     background-color: var(--main-color);
+    cursor: pointer;
   }
   .sc-tabs>.head-portrait:hover>.tip{
     transition: 0.5s;
@@ -89,10 +94,12 @@
   }
 </style>
 <template>
-  <div id="sidebar-component">
+  <div id="sidebar-component" :class="{ active: isActive }">
     <div class="sc-tabs">
       <!--car-wrap-->
-      <div class="car-wrap">
+      <div
+        class="car-wrap"
+        @click="activeStatusSwitch">
         <div class="car">
           <i class="iconfont icon-cart"></i>
           <p style="width: 12px">购物车</p>
@@ -102,7 +109,8 @@
       <div
         class="head-portrait"
         @mouseenter="headPortraitMouseenter"
-        @mouseleave="headPortraitMouseleave">
+        @mouseleave="headPortraitMouseleave"
+        @click="activeStatusSwitch">
         <img src="http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test0.png" alt="">
         <div class="tip">
           <span>会员权益</span>
@@ -117,10 +125,12 @@
   export default {
     data(){
       return{
+        sidebarComponentStatusActive:false,
         lnBodyDatas:[
           ['清香','红茶'],['可口','绿茶'],['醇厚','黑茶'],['淡雅','黄茶'],
           ['极品','茶具']
-        ]
+        ],
+        isActive:false
       }
     },
     methods:{
@@ -133,6 +143,13 @@
       },
       headPortraitMouseleave(){
         $(".tip").css({'display':'none','transform':'translateX(0px)','opacity':0})
+      },
+      activeStatusSwitch(){
+        if (this.isActive){
+          this.isActive=false
+        } else {
+          this.isActive=true
+        }
       }
     }
   }
