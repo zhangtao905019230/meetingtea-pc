@@ -46,6 +46,7 @@
   .icon-you-yuan:before{ content: "\e7c8" }
 
   .margin{margin: 0 auto;width: 1226px}
+  .margin-1090{margin: 0 auto;width: 1090px}
   .ul-li_a>li{color: #b0b0b0}
   .ul-li_a>li:hover{cursor: pointer;color: var(--main-color)}
   input{display: block;border: none}

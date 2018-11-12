@@ -23,6 +23,7 @@
     height: 460px;
     width: 234px;
     background-color: rgba(0,0,0,.5);
+    display: none;
   }
   .ct-content>.largeclass-ul{
     padding: 20px 0;

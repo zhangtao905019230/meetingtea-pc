@@ -9,7 +9,7 @@
   /*"07": "Medicinal Tea",*/
   /*"08": "Tea Set",*/
   /*"09": "Other",*/
-  .classified-display-cabinet{background-color: #f5f5f5}
+  .classified-display-cabinet{background-color: #f5f5f5;font-size: 14px}
   .classified-display-cabinet>.margin{overflow: hidden}
   .classified-display-cabinet>.margin>img{width: 1226px;display: block;margin: 42px 0 42px 0;}
   .classified-display-cabinet>.margin>.box-hd{display: flex;justify-content: space-between}

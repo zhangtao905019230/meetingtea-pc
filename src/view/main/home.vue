@@ -3,7 +3,7 @@
     <!--<floor-nav></floor-nav>-->
     <lift-nav></lift-nav>
     <banner></banner>
-    <four-small-banners></four-small-banners>
+    <!--<four-small-banners></four-small-banners>-->
     <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>
     <classified-display-cabinet tea-largeclass="01" :tea-details="teaDetails[1]" :comment="comment"></classified-display-cabinet>
     <classified-display-cabinet tea-largeclass="02" :tea-details="teaDetails[2]" :comment="comment"></classified-display-cabinet>

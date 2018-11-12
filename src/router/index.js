@@ -10,6 +10,7 @@ import productDetails from '../view/main/product-details'
 import shoppingCart from '../view/main/shopping-cart'
 
 import teaCultureMuseum from '../view/main/tea-culture-museum'
+// import te
 
 Vue.use(Router)
 
@@ -36,6 +37,20 @@ const router = new Router({
           component: teaCultureMuseum,
           meta: {
             title: '遇茶-茶文化馆'
+          }
+        },
+        {
+          path: 'tea-culture',
+          component: resolve => require(['../view/main/tea-culture'], resolve),
+          meta: {
+            title: '遇茶-茶文化'
+          }
+        },
+        {
+          path: 'lecha-article-details',
+          component: resolve => require(['../widget/lecha-article-details'], resolve),
+          meta: {
+            title: '遇茶-乐茶文章'
           }
         },
         {
