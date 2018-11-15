@@ -66,6 +66,6 @@
   .rotating-arrowhead-par:hover b.rotating-arrowhead{
     transform-origin: 50% 25%;
     transition: 0.3s;
-    transform: rotate(180deg)
+    transform: rotate(180deg);
   }
 </style>
