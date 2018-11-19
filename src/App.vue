@@ -3,7 +3,9 @@
 </template>
 <style>
   :root{
-    --main-color: #ff0036;
+    /*--main-color: #ff0036;天猫红*/
+    --main-color: #108EE9;
+  /*//支付宝蓝*/
     --main-bg: rgb(255, 255, 255);
     --logo-border-color: rebeccapurple;
 

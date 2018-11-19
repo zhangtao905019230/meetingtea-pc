@@ -3,8 +3,6 @@
     <site-nav></site-nav>
     <header-component></header-component>
     <tab-nav></tab-nav>
-    <category-type></category-type>
-    <sidebar-component></sidebar-component>
     <router-view></router-view>
     <end></end>
   </div>

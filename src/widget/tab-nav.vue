@@ -1,31 +1,36 @@
 <style>
+  .tab-nav{
+    margin-bottom: 20px;
+  }
   .tn-largeclass-list{
     display: flex;
+    justify-content: space-between;
   }
   .tn-largeclass-list>li{
-    width: 76px;
     height: 20px;
     border-bottom: 3px solid white;
     font-size: 14px;
     font-weight: 700;
     color: black;
     text-align: center;
-    /*b4a078*/
   }
   .tn-largeclass-list>li:hover{
     border-bottom: 3px solid #b4a078;
     color: #b4a078;
     cursor: pointer;
   }
-  .tn-largeclass-list>li:nth-child(6){
-    border-right: 1px solid #e4e4e4;
+
+  .tn-largeclass-list>li.active{
+    border-bottom: 3px solid #b4a078;
+    color: #b4a078;
+    cursor: pointer;
   }
 </style>
 <template>
   <div class="tab-nav">
-    <div class="margin-1090">
+    <div class="margin">
       <ul class="tn-largeclass-list">
-        <li v-for="(item,index) of navLists" @click="goTo(item.path)">{{item.name}}</li>
+        <li v-for="(item,index) of navLists" :class="{active:item.isActive}" @click="goTo(item.path,index)">{{item.name}}</li>
       </ul>
     </div>
   </div>
@@ -35,19 +40,25 @@
     data(){
       return{
         navLists:[
-          {'name':'首页','path':'home'},
-          {'name':'红茶'},
-          {'name':'绿茶'},
-          {'name':'黑茶'},
-          {'name':'乌龙茶'},
-          {'name':'黄茶'},
-          {'name':'茶具'},
-          {'name':'茶文化','path':'tea-culture'}
+          {'name':'首页','path':'home','isActive':false},
+          {'name':'红茶','isActive':false},
+          {'name':'绿茶','isActive':false},
+          {'name':'黑茶','isActive':false},
+          {'name':'白茶','isActive':false},
+          {'name':'乌龙茶','isActive':false},
+          {'name':'黄茶','isActive':false},
+          {'name':'花茶','isActive':false},
+          {'name':'茶具','isActive':false},
+          {'name':'茶文化','path':'tea-culture','isActive':false}
         ]
       }
     },
     methods:{
-      goTo(path){
+      goTo(path,index){
+        this.navLists.forEach((value, index, array)=>{
+          value.isActive=false
+        })
+        this.navLists[index].isActive=true
         this.$router.push({path:path})
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <!--<floor-nav></floor-nav>-->
-    <lift-nav></lift-nav>
+    <!--<lift-nav></lift-nav>-->
     <banner></banner>
     <!--<four-small-banners></four-small-banners>-->
     <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>

@@ -22,7 +22,8 @@
     background-color: rgb(247, 245, 241);
     color: #333;
     font-size: 16px;
-    text-indent: 2rem;
+    /*text-indent: 2rem;*/
+    line-height: 2;
   }
 </style>
 <template>
@@ -36,7 +37,7 @@
           <p style="font-size: 14px">{{publishTime}}</p>
         </div>
       </div>
-      <div class="lad-content" v-html="content">
+      <div class="lad-content" v-html="testArticle[2].markdownHtml">
       </div>
     </div>
   </div>
@@ -49,7 +50,8 @@
         title:'',
         author:'',
         publishTime:'',
-        content:''
+        content:'',
+        testArticle:[]
       }
     },
     mounted(){
@@ -64,6 +66,15 @@
           this.content=res.data.content
         }
       )
+
+      axios.get(this.dataInterface + ":3030/articles/getTestArticle")
+        .then(res => {
+          console.log(res)
+          this.testArticle=res.data
+        })
+        .catch(err=>{
+          reject(err)
+        });
       // })
     }
   }

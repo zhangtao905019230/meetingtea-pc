@@ -1,13 +1,18 @@
 <style>
-  #banner{background-color: firebrick}
+  #banner>.margin{
+    width: 100%;
+    min-width: 1226px;
+  }
+  #banner{
+    background-color: firebrick
+  }
   .swiper-container {
+    text-align: center;
     width: 100%;
     height: 100%;
   }
   .swiper-slide {
-    height: 460px;
-    background-position: center;
-    background-size: cover;
+    /*height: 420px;*/
   }
   .swiper-pagination>.swiper-pagination-bullet{
     width: 25px;
@@ -24,13 +29,21 @@
 <template>
   <div id="banner" :style="{'background-color':colorCard[activeIndex]}">
     <div class="margin">
-      <!-- Swiper -->
+       <!--Swiper -->
       <div class="swiper-container banner-swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner1.jpg)"></div>
-          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner2.jpg)"></div>
-          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner3.jpg)"></div>
-          <div class="swiper-slide" style="background-image:url(http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/test/banner4.jpg)"></div>
+          <div class="swiper-slide">
+            <img src="https://yanxuan.nosdn.127.net/945dfc5e8722da7107fcd66dd227ecce.jpg?imageView&quality=95&thumbnail=1920x420" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://yanxuan.nosdn.127.net/99d63f093203ad4d0d1065884b57ac5d.jpg?imageView&quality=95&thumbnail=1920x420" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://yanxuan.nosdn.127.net/f50fb5a50bee9a2f62afc23c9f2b0718.jpg?imageView&quality=95&thumbnail=1920x420" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://yanxuan.nosdn.127.net/9314edf512773e438717a5ac796da955.jpg?imageView&quality=95&thumbnail=1920x420" alt="">
+          </div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination swiper-pagination-white"></div>

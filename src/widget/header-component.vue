@@ -1,5 +1,5 @@
 <style>
-  #header-component>.margin{display: flex}
+  #header-component>.margin{display: flex;margin-top: 20px;margin-bottom: 20px}
   .hc-logo{height: 130px;cursor: pointer}
 
   .hc-search{padding-top: 38px;margin-left: 100px}
@@ -34,15 +34,6 @@
     border-right: none;
   }
   .hot{color: var(--main-color)}
-
-  .tea-culture-museum-btn{
-    margin-top: 38px;
-    margin-left: 50px;
-    border: 1px solid var(--main-color);
-    height: 32px;
-    border-radius: 16px;
-    width: 100px;
-    color: var(--main-color)}
 </style>
 <template>
   <div id="header-component">
@@ -64,8 +55,6 @@
           <li><a>{{$t("07")}}</a></li>
         </ul>
       </div>
-
-      <input type="button" :value="$t('logo.and.search.component.culture')" @click="goTo('/main/teaCultureMuseum')" class="tea-culture-museum-btn"/>
     </div>
   </div>
 </template>

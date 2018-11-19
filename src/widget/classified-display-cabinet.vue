@@ -97,8 +97,8 @@
     flex-direction: column;
     padding: 8px 30px 8px 30px;
   }
-  .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li>.review-wrapper>div>.review{color: #fff;font-size: 12px}
-  .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li>.review-wrapper>div>.author{color: rgba(255,255,255,0.6);font-size: 12px}
+  .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li>.review-wrapper>div>.review{color: #fff;font-size: 14px}
+  .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li>.review-wrapper>div>.author{color: rgba(255,255,255,0.6);font-size: 14px}
   .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li:hover>.review-wrapper>div{transform: translateY(-35px)}
   .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li>.saleoff{width: 64px;height: 20px;background-color: #3a8ee6}
   .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li>.figure{width: 150px;height: 150px;background-color: #8c939d}
@@ -108,7 +108,7 @@
   <div class="classified-display-cabinet">
     <div class="margin">
       <!--box-banner-->
-      <img :src="'http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/'+teaLargeclass+'/banner.jpg'" alt="" class="box-banner">
+      <!--<img :src="'http://101.132.46.146:8080/elfinder/files/zhangtao25/pc/classified-display-cabinet/'+teaLargeclass+'/banner.jpg'" alt="" class="box-banner">-->
       <!--box-hd-->
       <div class="box-hd">
         <div class="top-link">
@@ -139,7 +139,7 @@
             "margin-bottom": "10px"
             }'>
             </div>
-            <p>{{teaDetail.title}}</p>
+            <p style="color: #212121">{{teaDetail.title}}</p>
             <div class="desc">{{teaDetail.desc}}</div>
             <p>
               <span style="color: var(--main-color)">￥{{teaDetail.price}}</span>
@@ -147,7 +147,7 @@
             </p>
 
             <div class="review-wrapper">
-              <div>
+              <div style="color: black">
                 <span class="review">{{comment[index].review}}</span>
                 <span class="author">{{$t("classified.display.cabinet.from",{name:comment[index].author})}}</span>
               </div>

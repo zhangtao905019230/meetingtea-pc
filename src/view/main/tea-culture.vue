@@ -22,7 +22,7 @@
     display: flex;justify-content: space-between
   }
   .tc-row>.bd>ul>li{
-    width: 260px;border: 1px solid #eaeaea;cursor: pointer;
+    width: 295px;border: 1px solid #eaeaea;cursor: pointer;
     /*overflow: hidden;*/
   }
   .tc-row>.bd>ul>li:hover>div>img{transform: scale(1.05,1.05);transition: 0.5s}
@@ -60,7 +60,7 @@
 </style>
 <template>
   <div class="tea-culture">
-    <div class="lecha tc-row margin-1090">
+    <div class="lecha tc-row margin">
       <div class="hd">
         <span>乐茶</span>
         <a>更多></a>
@@ -69,7 +69,7 @@
         <ul>
           <li v-for="(item,index) of articleArr" :key="index" @click="goTo('lecha-article-details',item.arctic_id)">
             <div style="overflow: hidden">
-              <img :src="item.img_src" alt="" style="width: 260px">
+              <img :src="item.img_src" alt="" style="width: 100%">
             </div>
             <div class="li-bottom">
               <div class="author-info">
