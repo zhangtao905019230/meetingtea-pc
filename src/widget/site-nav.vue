@@ -4,6 +4,7 @@
     /*height: 36px;*/
     color: #ccc;
     padding: 9px 0;
+    font-size: 12px;
   }
   #site-nav ul>li{
     border-right:1px solid #ccc;

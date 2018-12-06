@@ -4,14 +4,14 @@
     <!--<lift-nav></lift-nav>-->
     <banner></banner>
     <!--<four-small-banners></four-small-banners>-->
-    <classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="01" :tea-details="teaDetails[1]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="02" :tea-details="teaDetails[2]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="03" :tea-details="teaDetails[3]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="04" :tea-details="teaDetails[4]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="05" :tea-details="teaDetails[5]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="06" :tea-details="teaDetails[6]" :comment="comment"></classified-display-cabinet>
-    <classified-display-cabinet tea-largeclass="07" :tea-details="teaDetails[7]" :comment="comment"></classified-display-cabinet>
+    <!--<classified-display-cabinet tea-largeclass="00" :tea-details="teaDetails[0]" :comment="comment"></classified-display-cabinet>-->
+    <!--<classified-display-cabinet tea-largeclass="01" :tea-details="teaDetails[1]" :comment="comment"></classified-display-cabinet>-->
+    <!--<classified-display-cabinet tea-largeclass="02" :tea-details="teaDetails[2]" :comment="comment"></classified-display-cabinet>-->
+    <!--<classified-display-cabinet tea-largeclass="03" :tea-details="teaDetails[3]" :comment="comment"></classified-display-cabinet>-->
+    <!--<classified-display-cabinet tea-largeclass="04" :tea-details="teaDetails[4]" :comment="comment"></classified-display-cabinet>-->
+    <!--<classified-display-cabinet tea-largeclass="05" :tea-details="teaDetails[5]" :comment="comment"></classified-display-cabinet>-->
+    <!--<classified-display-cabinet tea-largeclass="06" :tea-details="teaDetails[6]" :comment="comment"></classified-display-cabinet>-->
+    <!--<classified-display-cabinet tea-largeclass="07" :tea-details="teaDetails[7]" :comment="comment"></classified-display-cabinet>-->
   </div>
 </template>
 <script>
@@ -44,7 +44,7 @@
       }
     },
     mounted(){
-      this.getEightHotGoods()
+      // this.getEightHotGoods()
     },
     methods:{
       initTeaDetails(){

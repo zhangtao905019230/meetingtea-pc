@@ -52,21 +52,21 @@ Vue.prototype.phpStaticFilePath = 'http://101.132.46.146:8080'
 
 Vue.config.productionTip = false
 
-store.dispatch('checkLogin',{next:function next(){},dataInterface:process.env.API_ROOT,tips:false})
+// store.dispatch('checkLogin',{next:function next(){},dataInterface:process.env.API_ROOT,tips:false})
 
-router.beforeEach((to, from, next) => {
-  store.dispatch('checkPath',{name:to.name})
-  if (to.meta.title){
-    document.title = to.meta.title
-  }else {
-    document.title = '遇见茶，遇见你——生活累了，坐下来一起喝杯茶吧。'
-  }
-  if (to.path=='/login'||to.path=='/reg'||to.path=='/main/home'){
-    next()
-  } else {
-    store.dispatch('checkLogin',{next:next,dataInterface:process.env.API_ROOT,tips:true})
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   store.dispatch('checkPath',{name:to.name})
+//   if (to.meta.title){
+//     document.title = to.meta.title
+//   }else {
+//     document.title = '遇见茶，遇见你——生活累了，坐下来一起喝杯茶吧。'
+//   }
+//   if (to.path=='/login'||to.path=='/reg'||to.path=='/main/home'){
+//     next()
+//   } else {
+//     store.dispatch('checkLogin',{next:next,dataInterface:process.env.API_ROOT,tips:true})
+//   }
+// })
 
 new Vue({
   el: '#app',

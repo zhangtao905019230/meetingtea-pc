@@ -62,6 +62,14 @@ const router = new Router({
           }
         },
         {
+          path: 'category-list',
+          name: 'category-list',
+          component: resolve => require(['../widget/category-list'], resolve),
+          meta: {
+            title: '遇茶-商品详情页'
+          }
+        },
+        {
           path: 'shoppingCart',
           name: 'shoppingCart',
           component: shoppingCart,
