@@ -1,16 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import home from '../view/main/home'
-
-import login from './../view/login'
-import reg from './../view/register'
-import main from './../view/main'
 import productDetails from '../view/main/product-details'
 import shoppingCart from '../view/main/shopping-cart'
 
 import teaCultureMuseum from '../view/main/tea-culture-museum'
-// import te
 
 Vue.use(Router)
 
@@ -23,18 +17,23 @@ const router = new Router({
     {
       path: '/main',
       name: 'main',
-      component: main,
+      component: resolve => require(['../view/main'], resolve),
       meta: { requiresAuth: true },
       children:[
         {
+          path: 'look',
+          name:'look',
+          component: resolve => require(['../view/main/look'], resolve),
+        },
+        {
           path: 'home',
           name:'home',
-          component: home
+          component: resolve => require(['../view/main/home'], resolve),
         },
         {
           path: 'teaCultureMuseum',
           name: 'teaCultureMuseum',
-          component: teaCultureMuseum,
+          component: resolve => require(['../view/main/tea-culture-museum'], resolve),
           meta: {
             title: '遇茶-茶文化馆'
           }
@@ -62,9 +61,9 @@ const router = new Router({
           }
         },
         {
-          path: 'category-list',
-          name: 'category-list',
-          component: resolve => require(['../widget/category-list'], resolve),
+          path: 'goods-list',
+          name: 'goods-list',
+          component: resolve => require(['../widget/goods-list'], resolve),
           meta: {
             title: '遇茶-商品详情页'
           }
@@ -82,7 +81,7 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: login,
+      component: resolve => require(['../view/login'], resolve),
       meta: {
         title: '遇茶-欢迎登陆'
       }
@@ -90,14 +89,21 @@ const router = new Router({
     {
       path: '/reg',
       name: 'reg',
-      component: reg,
+      component: resolve => require(['../view/register'], resolve),
       meta: {
         title: '遇茶-欢迎注册'
       }
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: resolve => require(['../view/test'], resolve),
+      meta: {
+        title: '测试'
+      }
+    },
 
   ],
-  // mode: 'history'
 })
 
 export default router

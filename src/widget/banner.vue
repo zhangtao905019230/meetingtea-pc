@@ -2,32 +2,34 @@
   #banner>.margin{
     width: 100%;
     min-width: 1226px;
+    /*position: relative;*/
+    z-index: -1000;
   }
   #banner{
-    background-color: firebrick
+    /*background-color: firebrick*/
   }
-  .swiper-container {
+  #banner .swiper-container {
     text-align: center;
     width: 100%;
     height: 100%;
   }
-  .swiper-slide {
+  #banner .swiper-slide {
     /*height: 420px;*/
   }
-  .swiper-pagination>.swiper-pagination-bullet{
+  #banner.swiper-pagination>.swiper-pagination-bullet{
     width: 25px;
     height: 5px;
     border-radius: 0%;
     background-color: #000;
     opacity: 0.6;
   }
-  .swiper-pagination>.swiper-pagination-bullet-active{
+  #banner .swiper-pagination>.swiper-pagination-bullet-active{
     background-color: #fff;
   }
 </style>
 
 <template>
-  <div id="banner" :style="{'background-color':colorCard[activeIndex]}">
+  <div id="banner">
     <div class="margin">
        <!--Swiper -->
       <div class="swiper-container banner-swiper-container">
@@ -56,8 +58,6 @@
   export default {
     data(){
       return{
-        activeIndex:'0',
-        colorCard:['rgb(248,241,231)','rgb(249,251,248)','rgb(243,237,212)','rgb(248,248,246)']
       }
     },
     methods:{
@@ -73,12 +73,7 @@
         },
         autoplay:{
           delay:5000
-        },
-        on: {
-          slideChangeTransitionStart: function(){
-            _this.activeIndex = this.activeIndex
-          },
-        },
+        }
       });
     }
   }

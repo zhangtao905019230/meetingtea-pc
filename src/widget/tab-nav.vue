@@ -1,109 +1,97 @@
 <style>
-  .tab-nav a{
-    color: #333;
-    display: block;
-  }
-  .tn-category-list{
+  #tab-nav>.margin>.sub_cat_ul1{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     position: relative;
   }
-  .tn-category-list>li{
-    padding: 20px 30px 0px 30px;
-    cursor: pointer;
+  #tab-nav>.margin>.sub_cat_ul1>li{
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .tn-category-list>li>span{
-    display: block;
-    color: #333;
-    font-weight: 700;
-    line-height: 2;
-    border-bottom: 3px solid white;
-  }
-  .tn-category-list>li>img{
-    width: 18px;
-    height: 10px;
+  #tab-nav>.margin>.sub_cat_ul1>li>span{border-bottom: 3px solid white;cursor: pointer;line-height: 2;font-weight: 700}
+  #tab-nav>.margin>.sub_cat_ul1>li:hover>span{color: var(--main-color);border-bottom: 3px solid var(--main-color)}
+  #tab-nav>.margin>.sub_cat_ul1>li:hover>img{opacity: 1}
+  #tab-nav>.margin>.sub_cat_ul1>li>img{
+    margin-top: 10px;
+    width: 20px;
+    height: 12px;
     position: relative;
-    z-index: 20000;
+    z-index: 4000;
     opacity: 0;
   }
-  .tn-category-list>li:hover>span{
-    border-bottom: 3px solid var(--main-color);
-    color: var(--main-color);
+  /*#tab-nav>.margin>.sub_cat_ul1>li:nth-child(10)>span{border-left: 1px solid #ccc}*/
+  #tab-nav>.margin>.sub_cat_ul1>li .sub_cat_ul2_wrap{
+    position: absolute;
+    z-index: 3000;
+    top: 53px;
+    left: 0;
   }
-  .tn-category-list>li>.sub_cat_ul{
+  #tab-nav>.margin>.sub_cat_ul1>li:nth-child(9) .sub_cat_ul2_wrap{left: 700px}
+  #tab-nav>.margin>.sub_cat_ul1>li .sub_cat_ul2{
     background-color: white;
-    position: absolute;
-    top: 65px;
-    z-index: 1000;
-    display: none;
-    justify-content: space-between;
+    padding: 20px 40px 30px;
     box-shadow: 0 0 1px 1px rgba(0,0,0,.1);
-    cursor: default;
-    opacity: 0;
-  }
-  .tn-category-list>li>.sub_cat_ul>img{
-    position: absolute;
-    top: -12px;
-  }
-  .tn-category-list>li:nth-child(2)>.sub_cat_ul{left: 0;}
-  .tn-category-list>li:nth-child(3)>.sub_cat_ul{left: 0;}
-  .tn-category-list>li:nth-child(4)>.sub_cat_ul{left: 0;}
-  .tn-category-list>li:nth-child(5)>.sub_cat_ul{left: 300px;}
-  .tn-category-list>li:nth-child(6)>.sub_cat_ul{right: 0;}
-  .tn-category-list>li:nth-child(7)>.sub_cat_ul{right: 200px;}
-  .tn-category-list>li:nth-child(8)>.sub_cat_ul{right: 0;}
-  .tn-category-list>li:nth-child(9)>.sub_cat_ul{right: 0;}
-  .tn-category-list>li>.sub_cat_ul>li{
-    padding: 24px;
-  }
-  .tn-category-list>li>.sub_cat_ul>li>a{
-    line-height: 32px;
-    font-size: 16px;
+    display: flex;
     font-weight: 700;
     text-align: left;
   }
-  .tn-category-list>li>.sub_cat_ul>li>.sub_cat_ul{
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border-top: 1px solid #ddd;
-  }
-  .tn-category-list>li>.sub_cat_ul>li>.sub_cat_ul>li{
-    display: flex;
-    align-items: center;
-    color: #333;
-  }
-  .tn-category-list>li>.sub_cat_ul>li>.sub_cat_ul>li:hover{
-    color: var(--main-color);
+  #tab-nav>.margin>.sub_cat_ul1>li .sub_cat_ul2>li>span{
+    border-bottom: 1px solid #ccc;
+    display: block;
+    margin-right: 40px;
+    line-height: 2;
     cursor: pointer;
   }
+  #tab-nav>.margin>.sub_cat_ul1>li .sub_cat_ul2>li{
+    width: 145px;
+    /*border: 1px solid #333;*/
+  }
+  .sub_cat_ul3>li{
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .sub_cat_ul3>li:hover{color: var(--main-color)}
 </style>
 <template>
-  <div class="tab-nav">
+  <div id="tab-nav">
     <div class="margin">
-      <ul class="tn-category-list sub_cat_ul1">
-        <li @click="goToHome"><span>首页</span></li>
+      <ul class="sub_cat_ul sub_cat_ul1">
+        <li @click="goTo('/main/home')"><span>首页</span></li>
         <li
           v-for="(item,index) of allMenuLabel.results"
-          @click="goToCategoryList"
+          @click="goTo('/main/goods-list')"
+          @mouseover="showSub_cat_ul2(index)"
+          @mouseleave="hideSub_cat_ul2(index)"
           :key="index">
           <span>{{item.name}}</span>
           <img class="arrow" src="../assets/icon/small-arrow.png" alt="">
-          <ul class="sub_cat_ul sub_cat_ul2">
-            <li v-for="(item,index) of item.sub_cat" :key="index">
-              <a>{{item.name}}</a>
-              <ul class="sub_cat_ul sub_cat_ul3">
+          <transition name="el-fade-in-linear">
+            <div class="sub_cat_ul2_wrap" v-show="isShowSub_cat_ul2[index].status">
+              <ul class="sub_cat_ul sub_cat_ul2">
                 <li v-for="(item,index) of item.sub_cat" :key="index">
-                  <img style="width: 50px;height: 50px" src="https://yanxuan.nosdn.127.net/f14322b575accf7ef8ca5d023c09b11a.png" alt="">
-                  <p>{{item.name}}</p>
+                  <span>{{item.name}}</span>
+                  <ul class="sub_cat_ul sub_cat_ul3">
+                    <li v-for="(item,index) of item.sub_cat" :key="index">
+                      <img style="width: 50px;height: 50px;margin-right: 10px" :src="testImg[index%5]" alt="">
+                      <span>{{item.name}}</span>
+                    </li>
+                  </ul>
                 </li>
               </ul>
-            </li>
-          </ul>
+            </div>
+          </transition>
         </li>
-        <li @click="goToTeaCulture"><span>茶文化</span></li>
+        <li @click="goTo('/main/tea-culture')" style="position: relative">
+          <i style="position: absolute;height: 20px ;border-left: 1px solid rgb(197,197,197);left: -40px;top: 5px"></i>
+          <span>茶文化</span>
+        </li>
+        <li @click="goTo('/main/look')">
+          <span>发现</span>
+        </li>
       </ul>
     </div>
   </div>
@@ -113,25 +101,29 @@
   export default {
     data(){
       return{
-        allMenuLabel:[]
+        allMenuLabel: [],
+        isShowSub_cat_ul2: [
+          {status:false},{status:false},{status:false},{status:false},
+          {status:false},{status:false},{status:false},{status:false}
+        ],
+        testImg:[
+          'https://yanxuan.nosdn.127.net/785a1507ce654746875063805c6c4235.png',
+          'https://yanxuan.nosdn.127.net/5bc69104d820dceb8d8b85ae93bb92a1.png',
+          'https://yanxuan.nosdn.127.net/2c1f794e57ec0d67be0e71a04f83325c.png',
+          'https://yanxuan.nosdn.127.net/ebc5db7f710a642af86728f9a9071f13.png',
+          'https://yanxuan.nosdn.127.net/4e653429b5c143f7bf7ca9546be19601.png',
+          'https://yanxuan.nosdn.127.net/c4e272044c1c87ea102669233f8aebc0.png',
+          'https://yanxuan.nosdn.127.net/c334fe053304b63f9cdcf88b7d16b948.png'
+        ]
       }
     },
     mounted(){
       this.getMenu();
-      this.JQStyleFunction();
     },
     methods:{
-      goToHome(){
-        this.$router.push({path:'/main/home'})
-      },
-      goToTeaCulture(){
-        this.$router.push({path:'/main/tea-culture'})
-      },
-      goTo(path,index){
-        console.log(path)
-      },
-      goToCategoryList(){
-        this.$router.push({path:'/main/category-list'})
+      goTo(path){
+        // console.log(path)
+        this.$router.push({path:path})
       },
       getMenu(){
         getCategory({
@@ -144,20 +136,13 @@
             console.log(error);
           });
       },
-      JQStyleFunction(){
-        setTimeout(()=>{
-          $(".tn-category-list li").hover(function(){
-            $(this).find('.sub_cat_ul2').css({display:'flex'})
-            $(this).find('.arrow').css({opacity:1})
-            $(this).find('.sub_cat_ul2').animate({opacity:1},200)
-          },function(){
-            $(this).find('.arrow').css({opacity:0})
-            $(this).find('.sub_cat_ul2').animate({opacity:0},200,function () {
-              $(this).css({display:'none'})
-            })
-          });
-        },1000)
+      showSub_cat_ul2(index){
+        this.isShowSub_cat_ul2[index].status = true
+      },
+      hideSub_cat_ul2(index){
+        this.isShowSub_cat_ul2[index].status = false
       }
     }
   }
 </script>
+
