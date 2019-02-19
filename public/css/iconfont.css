@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1047788 */
+  src: url('//at.alicdn.com/t/font_1047788_q6cj9jm0ux.eot');
+  src: url('//at.alicdn.com/t/font_1047788_q6cj9jm0ux.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1047788_q6cj9jm0ux.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1047788_q6cj9jm0ux.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1047788_q6cj9jm0ux.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1047788_q6cj9jm0ux.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:1rem;
+  font-style:normal;
+}
+
+.icon-message:before{ content: "\e6f5" }
+.icon-upload:before{ content: "\e64a" }
+.icon-search:before{ content: "\e67c" }

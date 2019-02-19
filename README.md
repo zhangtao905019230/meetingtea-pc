@@ -1,21 +1,29 @@
-developer's guide
-------
+# meetingtea-pc
 
-1.Naming components of Web sites
-======
+## Project setup
+```
+npm install
+```
 
-- main => `商城主要部分`
-- main/home => `购物中心页面`
-- main/detail = > `商品详情页面`
-- main/list => `所有商品列表页面`
-- main/cart => `购物车页面`
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-- register => `注册页面`
-- login => `登录页面`
+### Compiles and minifies for production
+```
+npm run build
+```
 
-2.Naming components
-- site-nav => `网站导航`
-- header-component => `头组件`
-- category-type => `商品分类`
-- footer-component => `页脚组件`
-- lift-nav => `左边的导航`
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
