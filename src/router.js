@@ -5,5 +5,13 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/explorer',
+      component:()=> import('./views/explorer')
+    },
+    {
+      path:'/discovery',
+      component:()=> import('./views/discovery')
+    }
   ]
 })
