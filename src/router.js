@@ -12,6 +12,16 @@ export default new Router({
     {
       path:'/discovery',
       component:()=> import('./views/discovery')
-    }
+    },
+    {
+      path:'/my',
+      component: () => import('./views/my'),
+      children:[
+        {
+          path:'setting',
+          component: () => import('./views/my/container-area-right/setting'),
+        }
+      ]
+    },
   ]
 })

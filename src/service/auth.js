@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-function login(username, password) {
+function login(phoneNumber, password) {
   return new Promise((resolve, reject)=>{
     let req = {
-      username,
+      phoneNumber,
       password
     };
     axios.post("/api/auth",req).then((res) => {
       let token = res.data.token;
-      resolve(res)
+      resolve(res.data)
     })
   })
 }

@@ -2,6 +2,9 @@
   #app{
     padding-top: 50px;
   }
+  :root{
+    --main-color: #f15467
+  }
 </style>
 <template>
   <div id="app">

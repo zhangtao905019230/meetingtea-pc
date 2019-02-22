@@ -58,7 +58,7 @@
 </style>
 <template>
   <div id="head-top">
-    <div class="margin">
+    <div class="margin" style="position: relative">
       <img src="./../assets/logo.png" alt="" class="logo">
       <ul class="menu-nav">
         <li v-for="(item,index) of menuNavArr" :key="index">
@@ -68,10 +68,43 @@
           </a>
         </li>
       </ul>
+      <div class="right">
+        <span @click="onClickLogin">登录</span>
+        <el-dropdown @command="handleCommand">
+          <span class="el-dropdown-link">
+            zhangtao25<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="personalCenter">个人中心</el-dropdown-item>
+            <el-dropdown-item command="logout">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+
+
     </div>
+    <el-dialog
+      title="登录"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose"
+      :append-to-body="true">
+      <div style="text-align: center">
+        <el-form style="text-align: center">
+          <el-form-item>
+            <el-input style="width: 272px" v-model="ruleForm.phoneNumber"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input style="width: 272px" v-model="ruleForm.password"></el-input>
+          </el-form-item>
+        </el-form>
+        <el-button style="width: 272px" type="primary" @click="onClickLoginBtn(ruleForm.phoneNumber,ruleForm.password)">登录</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
+  import AuthService from './../service/auth'
   export default {
     data(){
       return{
@@ -83,7 +116,12 @@
           {name:'加入我们'},
           {name:'招商合作'},
           {name:'品牌账号'},
-        ]
+        ],
+        dialogVisible:false,
+        ruleForm:{
+          phoneNumber:'',
+          password:''
+        }
       }
     },
     methods:{
@@ -93,6 +131,27 @@
         if (index == 1){
           this.$router.push({path:'/explorer'})
         }
+      },
+      onClickLogin(){
+        this.dialogVisible = true
+      },
+      onClickLoginBtn(phoneNumber,password){
+        AuthService.login(phoneNumber,password).then(res=>{
+          console.log(res)
+        })
+      },
+      handleCommand(command){
+        console.log(command)
+        if (command == 'personalCenter'){
+          this.$router.push({path:'/my/setting'})
+        }
+      },
+      handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
       }
     }
   }
