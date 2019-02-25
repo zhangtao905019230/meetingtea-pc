@@ -1,8 +1,5 @@
 const state = {
-  username: '',
-  userid: '',
   token: '',
-  // ----------------------
-  headerComponentStatus:true
+  userInfo: '{}',
 }
 export default state

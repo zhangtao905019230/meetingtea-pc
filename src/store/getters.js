@@ -1,6 +1,6 @@
 const getter = {
-  headerComponentStatus(state){
-    return state.headerComponentStatus
+  userInfo(state){
+    return JSON.parse(state.userInfo);
   }
 }
 export default getter

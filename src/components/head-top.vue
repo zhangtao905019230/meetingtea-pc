@@ -10,10 +10,11 @@
     box-shadow: 0 2px 6px 0 rgba(0,0,0,0.04);
   }
   #head-top .margin{
-    width: 1000px;
+    width: 1130px;
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
   #head-top .logo{
     width: 72px;
@@ -43,17 +44,17 @@
     color: #555;
   }
   #head-top .menu-nav > li >a:hover{
-    color: #f15467;
+    color: var(--main-color);
   }
   #head-top .menu-nav > li >a:hover>i{
-    background-color: #f15467
+    background-color: var(--main-color)
   }
   /*激活后的样式*/
   #head-top .menu-nav > li > a.active{
-    color: #f15467;
+    color: var(--main-color);
   }
   #head-top .menu-nav > li > a.active i {
-    background-color: #f15467;
+    background-color: var(--main-color);
   }
 </style>
 <template>
@@ -69,10 +70,11 @@
         </li>
       </ul>
       <div class="right">
-        <span @click="onClickLogin">登录</span>
-        <el-dropdown @command="handleCommand">
+        <span @click="onClickLogin" v-if="!userInfo.phoneNumber">登录</span>
+        <login ref="login" ></login>
+        <el-dropdown @command="handleCommand" v-if="userInfo.phoneNumber">
           <span class="el-dropdown-link">
-            zhangtao25<i class="el-icon-arrow-down el-icon--right"></i>
+            {{userInfo.phoneNumber}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="personalCenter">个人中心</el-dropdown-item>
@@ -80,32 +82,16 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-
-
     </div>
-    <el-dialog
-      title="登录"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose"
-      :append-to-body="true">
-      <div style="text-align: center">
-        <el-form style="text-align: center">
-          <el-form-item>
-            <el-input style="width: 272px" v-model="ruleForm.phoneNumber"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-input style="width: 272px" v-model="ruleForm.password"></el-input>
-          </el-form-item>
-        </el-form>
-        <el-button style="width: 272px" type="primary" @click="onClickLoginBtn(ruleForm.phoneNumber,ruleForm.password)">登录</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 <script>
-  import AuthService from './../service/auth'
+  import {mapActions,mapGetters} from 'vuex'
+  import Login from './head-top/login'
   export default {
+    components:{
+      'login': Login
+    },
     data(){
       return{
         activeIndex: 0,
@@ -117,42 +103,38 @@
           {name:'招商合作'},
           {name:'品牌账号'},
         ],
-        dialogVisible:false,
-        ruleForm:{
-          phoneNumber:'',
-          password:''
-        }
+
       }
     },
+    mounted(){
+
+    },
     methods:{
+      ...mapActions(['clearUser']),
       onSelectMenu(index){
         this.activeIndex = index
-        console.log(index)
         if (index == 1){
           this.$router.push({path:'/explorer'})
         }
       },
       onClickLogin(){
-        this.dialogVisible = true
-      },
-      onClickLoginBtn(phoneNumber,password){
-        AuthService.login(phoneNumber,password).then(res=>{
-          console.log(res)
-        })
+        this.$refs.login.dialogVisible = true
       },
       handleCommand(command){
         console.log(command)
         if (command == 'personalCenter'){
           this.$router.push({path:'/my/setting'})
+        }else if (command == 'logout'){
+          this.clearUser();
+          this.$message({
+            message: '退出登录成功！',
+            type: 'success'
+          });
         }
-      },
-      handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
       }
+    },
+    computed:{
+      ...mapGetters(['userInfo'])
     }
   }
 </script>

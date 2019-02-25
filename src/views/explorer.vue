@@ -40,7 +40,7 @@
     font-weight: bolder;
   }
   #explorer .note-tab > li >a:hover>i{
-    background-color: #f15467
+    background-color: var(--main-color)
   }
   /*激活后的样式*/
   #explorer .note-tab > li > a.active{
@@ -48,7 +48,7 @@
     font-weight: bolder;
   }
   #explorer .note-tab > li > a.active i {
-    background-color: #f15467;
+    background-color: var(--main-color);
   }
 
   .note-box{

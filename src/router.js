@@ -18,8 +18,24 @@ export default new Router({
       component: () => import('./views/my'),
       children:[
         {
+          path:'focus',
+          component: () => import('./views/my/my-right/focus'),
+        },
+        {
+          path:'works',
+          component: () => import('./views/my/my-right/works'),
+        },
+        {
+          path:'collections',
+          component: () => import('./views/my/my-right/collections'),
+        },
+        {
+          path:'statistics',
+          component: () => import('./views/my/my-right/statistics'),
+        },
+        {
           path:'setting',
-          component: () => import('./views/my/container-area-right/setting'),
+          component: () => import('./views/my/my-right/setting'),
         }
       ]
     },
