@@ -6,6 +6,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path:'/',
+      redirect:'/explorer'
+    },
+    {
       path:'/explorer',
       component:()=> import('./views/explorer')
     },
@@ -16,6 +20,7 @@ export default new Router({
     {
       path:'/my',
       component: () => import('./views/my'),
+      meta:{auth:true},
       children:[
         {
           path:'focus',
@@ -36,6 +41,7 @@ export default new Router({
         {
           path:'setting',
           component: () => import('./views/my/my-right/setting'),
+          meta:{auth:true}
         }
       ]
     },

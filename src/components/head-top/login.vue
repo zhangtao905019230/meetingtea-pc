@@ -1,22 +1,27 @@
+<style>
+  .login-dialog .el-dialog__header{
+    padding: 0;
+  }
+</style>
 <template>
   <div id="login">
     <el-dialog
-      title=""
       :visible.sync="dialogVisible"
-      width="30%"
-      :append-to-body="true">
+      width="400px"
+      :append-to-body="true"
+      custom-class="login-dialog">
       <div style="text-align: center">
-        <p style="text-align: center;font-size: 16px;line-height: 2">账号密码登录</p>
+        <p style="text-align: center;font-size: 24px;line-height: 2;margin-bottom: 24px">登录</p>
         <el-form style="text-align: center">
           <el-form-item>
-            <el-input style="width: 272px" v-model="ruleForm.phoneNumber"></el-input>
+            <el-input style="width: 300px" v-model="ruleForm.phoneNumber"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input style="width: 272px" v-model="ruleForm.password" type="password"></el-input>
+            <el-input style="width: 300px" v-model="ruleForm.password" type="password"></el-input>
           </el-form-item>
         </el-form>
         <el-button
-          style="width: 272px"
+          style="width: 150px;margin-bottom: 14px;margin-top: 10px"
           type="primary"
           @click="onClickLoginBtn(ruleForm.phoneNumber,ruleForm.password)"
           :loading="loading">登录</el-button>

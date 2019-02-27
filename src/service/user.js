@@ -1,18 +1,40 @@
 import axios from 'axios'
+import ErrorHandler from './../common/error-handler'
 
-function getMyInfo(username, token) {
+// http request 拦截器
+axios.interceptors.request.use(
+  config => {
+    if (window.gApp.$store.state.token) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
+      config.headers.Authorization = JSON.stringify({
+        phoneNumber:window.gApp.$store.state.phoneNumber,
+        token:window.gApp.$store.state.token
+      });
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  });
+function getUserInfo() {
   return new Promise((resolve, reject)=>{
-    let req = {
-      username,
-      password
-    };
-    axios.post("/api/auth",req).then((res) => {
-      let token = res.data.token;
-      resolve(res)
+    axios.get("/api/user/basic").then((res) => {
+      resolve(res.data)
+    },res=>{
+      ErrorHandler.restApiErrorHandler(res,reject)
+    })
+  })
+}
+function updateUser(req) {
+  return new Promise((resolve, reject)=>{
+    axios.post("/api/user/update",req).then((res) => {
+      resolve(res.data)
+    },res=>{
+      ErrorHandler.restApiErrorHandler(res,reject)
     })
   })
 }
 
 export default {
-  login
+  getUserInfo,
+  updateUser
 }

@@ -27,7 +27,7 @@
     <div class="cropper-wrap" :style="{opacity: isShowCropper}">
       <div class="left">
         <div class="box">
-          <img id="image" src="http://localhost:3030/uploads/bd_logo1.png">
+          <img id="image" src="http://localhost:3030/uploads/testtouxiang.jpeg">
         </div>
         <div class="tools">
           <span>重新上传</span>
@@ -90,8 +90,8 @@
         let avatarsDOM = $('.small').html()
         let avatarsParam = this.$image.cropper('getData', true)
 
-        axios.get('http://localhost:3030/test/up',{params:{avatarsDOM,avatarsParam}}).then(res=>{
-          console.log(1)
+        axios.get('/api/user/avatars/upload',{params:{avatarsDOM,avatarsParam}}).then(res=>{
+          console.log(res)
         })
 
         this.dialogVisible = false;

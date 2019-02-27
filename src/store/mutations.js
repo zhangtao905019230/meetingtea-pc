@@ -2,20 +2,23 @@
 const mutation = {
   login(state,payload){
     state.token = payload.token;
-    state.userInfo = JSON.stringify(payload.userInfo);
+    state.phoneNumber = payload.phoneNumber;
+    state.isLogin = true;
     localStorage.setItem('token',payload.token);
-    localStorage.setItem('userInfo',JSON.stringify(payload.userInfo));
+    localStorage.setItem('phoneNumber',payload.phoneNumber);
   },
   setUser(state,payload){
+    state.isLogin = true;
     state.token = localStorage.getItem('token');
-    state.userInfo = localStorage.getItem('userInfo');
+    state.phoneNumber = localStorage.getItem('phoneNumber');
   },
   clearUser(state,payload){
     state.token = '';
-    state.userInfo = '{}';
+    state.phoneNumber = '';
+    state.isLogin = false;
     localStorage.removeItem('token');
-    localStorage.removeItem('userInfo');
+    localStorage.removeItem('phoneNumber');
   }
-}
+};
 
 export default mutation

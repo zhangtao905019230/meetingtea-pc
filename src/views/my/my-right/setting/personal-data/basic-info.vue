@@ -3,12 +3,9 @@
 <template>
   <div class="basic-info">
     <div style="text-align: right">
-      <el-button type="primary">保存</el-button>
+      <el-button type="primary" @click="onSave" >保存</el-button>
     </div>
     <el-form :model="ruleForm" :rules="rules">
-      <el-form-item prop="phoneNumber" label="手机号" label-width="80px">
-        <el-input style="width: 300px" v-model="ruleForm.phoneNumber"></el-input>
-      </el-form-item>
       <el-form-item prop="email" label="邮箱" label-width="80px">
         <el-input style="width: 300px" v-model="ruleForm.email"></el-input>
       </el-form-item>
@@ -45,23 +42,20 @@
 </template>
 <script>
   import CityService from './../../../../../service/city'
-
+  import UserService from './../../../../../service/user'
+  import {mapGetters,mapActions} from 'vuex'
   export default {
     data() {
       return {
         cityOption:[],
         ruleForm: {
-          phoneNumber: '18158899797',
-          email: '18158899797@163.com',
+          email: '',
           sex: 0,
           hometown: null,
           nowLiving: null,
           signature: ''
         },
         rules: {
-          phoneNumber:[
-            { min: 11, max: 11, required: true, message: '请输11位入手机号', trigger: 'blur' }
-          ],
           email:[
             { required: true, message: '请输入邮箱', trigger: 'blur' }
           ]
@@ -71,13 +65,38 @@
     mounted() {
       CityService.getAll().then(res => {
         this.cityOption = res.data.data.china.byProvince
-        // console.log(res.data.data.china.byProvince)
-      })
+      });
+      this.initRuleForm()
     },
     methods: {
+      ...mapActions(['login']),
       handleChange(val){
-        console.log(val,111)
+      },
+      onSave(){
+        UserService.updateUser(this.ruleForm).then(res=>{
+          this.$message({
+            message: res.msg,
+            type: 'success'
+          })
+        }).catch(err=>{
+          this.$message.error(err)
+        })
+      },
+      initRuleForm(){
+        UserService.getUserInfo().then(res=>{
+          this.ruleForm = {
+            phoneNumber: res.phoneNumber,
+            email: res.email,
+            sex: res.sex,
+            hometown: res.hometown,
+            nowLiving: res.nowLiving,
+            signature: res.signature
+          }
+        })
       }
+    },
+    computed:{
+      ...mapGetters(['userInfo'])
     }
   }
 </script>

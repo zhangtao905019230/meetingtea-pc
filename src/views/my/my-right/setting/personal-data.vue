@@ -32,13 +32,13 @@
 </style>
 <template>
   <div class="personal-data">
-    <!--<div class="user-avatars">-->
-      <!--<div class="wrap" @click="openUploadAvatarsDialog">-->
-        <!--<span>修改头像</span>-->
-        <!--<div v-html="avatarsDOM"></div>-->
-      <!--</div>-->
-      <!--<upload-avatars-dialog :avatarsParam="avatarsParam" @giveData="getCropperData" ref="uploadAvatarsDialog"></upload-avatars-dialog>-->
-    <!--</div>-->
+    <div class="user-avatars">
+      <div class="wrap" @click="openUploadAvatarsDialog">
+        <span>修改头像</span>
+        <div v-html="avatarsDOM"></div>
+      </div>
+      <upload-avatars-dialog :avatarsParam="avatarsParam" @giveData="getCropperData" ref="uploadAvatarsDialog"></upload-avatars-dialog>
+    </div>
     <p style="text-align: center;line-height: 2">zhangtao25</p>
 
     <el-collapse v-model="activeNames">
@@ -67,11 +67,11 @@
       }
     },
     mounted(){
-      // axios.get('http://localhost:3030/test').then(res=>{
-      //   // console.log(res.data[0])
-      //   this.avatarsDOM = res.data[0].avatarsDOM
-      //   this.avatarsParam = res.data[0].avatarsParam
-      // })
+      axios.get('/api/user/avatars').then(res=>{
+        console.log(res.data)
+        this.avatarsDOM = res.data.avatarsDOM
+        this.avatarsParam = res.data.avatarsParam
+      })
     },
     methods:{
       openUploadAvatarsDialog(){

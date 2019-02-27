@@ -111,11 +111,7 @@
       }
     },
     mounted(){
-      // this.init()
       this.initTest()
-      NoteService.getNoteByType('sss').then(res=>{
-        console.log(res)
-      })
     },
     methods:{
       onSelectMenu(index){

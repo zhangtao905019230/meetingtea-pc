@@ -18,11 +18,13 @@ function login(phoneNumber, password) {
 function autoLogin() {
   return new Promise((resolve, reject) => {
     let req = {
-      userInfo: localStorage.getItem('userInfo'),
+      phoneNumber: localStorage.getItem('phoneNumber'),
       token: localStorage.getItem('token')
     };
     axios.post("/api/auth/token", req).then((res) => {
       resolve(res.data)
+    },res => {
+      ErrorHandler.restApiErrorHandler(res, reject)
     })
   })
 }

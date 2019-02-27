@@ -70,11 +70,11 @@
         </li>
       </ul>
       <div class="right">
-        <span @click="onClickLogin" v-if="!userInfo.phoneNumber">登录</span>
+        <span @click="onClickLogin" v-if="!phoneNumber">登录</span>
         <login ref="login" ></login>
-        <el-dropdown @command="handleCommand" v-if="userInfo.phoneNumber">
+        <el-dropdown @command="handleCommand" v-if="phoneNumber">
           <span class="el-dropdown-link">
-            {{userInfo.phoneNumber}}<i class="el-icon-arrow-down el-icon--right"></i>
+            {{phoneNumber}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="personalCenter">个人中心</el-dropdown-item>
@@ -121,11 +121,11 @@
         this.$refs.login.dialogVisible = true
       },
       handleCommand(command){
-        console.log(command)
         if (command == 'personalCenter'){
           this.$router.push({path:'/my/setting'})
         }else if (command == 'logout'){
           this.clearUser();
+          this.$router.push({path:'/'})
           this.$message({
             message: '退出登录成功！',
             type: 'success'
@@ -134,7 +134,7 @@
       }
     },
     computed:{
-      ...mapGetters(['userInfo'])
+      ...mapGetters(['phoneNumber'])
     }
   }
 </script>

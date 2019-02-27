@@ -1,6 +1,6 @@
 const getter = {
-  userInfo(state){
-    return JSON.parse(state.userInfo);
+  phoneNumber(state){
+    return state.phoneNumber;
   }
 }
 export default getter
