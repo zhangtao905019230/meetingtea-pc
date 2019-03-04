@@ -56,12 +56,12 @@
             this.login(res);
             this.dialogVisible = false;
             this.loading = false;
-          },1000)
+          },500)
         }).catch(error=>{
           setTimeout(()=>{
             this.$message.error(error);
             this.loading = false;
-          },1000)
+          },500)
 
         })
       }

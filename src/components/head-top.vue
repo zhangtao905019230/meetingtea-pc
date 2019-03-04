@@ -56,6 +56,18 @@
   #head-top .menu-nav > li > a.active i {
     background-color: var(--main-color);
   }
+  #head-top .right{
+    display: flex;
+    align-items: center;
+  }
+  #head-top .right>.avatar-container{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    zoom: .3;
+    margin-right: 14px;
+  }
 </style>
 <template>
   <div id="head-top">
@@ -72,6 +84,7 @@
       <div class="right">
         <span @click="onClickLogin" v-if="!user_phone">登录</span>
         <login ref="login" ></login>
+        <div class="avatar-container" v-html="JSON.parse(user_avatar).avatarsDOM"></div>
         <el-dropdown @command="handleCommand" v-if="user_phone">
           <span class="el-dropdown-link">
             {{user_phone}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -88,6 +101,9 @@
 <script>
   import {mapActions,mapGetters} from 'vuex'
   import Login from './head-top/login'
+  // 进行自动登录校验
+  import AuthService from './../service/auth'
+  import UserService from './../service/user'
   export default {
     components:{
       'login': Login
@@ -102,12 +118,21 @@
           {name:'加入我们'},
           {name:'招商合作'},
           {name:'品牌账号'},
-        ],
-
+        ]
       }
     },
     mounted(){
-
+      if(localStorage.getItem('token')!=null){
+        AuthService.autoLogin().then(res=>{
+          window.gApp.$message({
+            message: 'token校验通过，自动登录成功！',
+            type: 'success'
+          });
+          window.gApp.$store.dispatch('setUser',res);
+        }).catch(error=>{
+          window.gApp.$message.error(error);
+        })
+      }
     },
     methods:{
       ...mapActions(['clearUser']),
@@ -134,7 +159,7 @@
       }
     },
     computed:{
-      ...mapGetters(['user_phone'])
+      ...mapGetters(['user_phone','user_avatar'])
     }
   }
 </script>

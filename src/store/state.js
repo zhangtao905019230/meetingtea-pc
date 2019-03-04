@@ -1,7 +1,7 @@
 const state = {
   token: '',
-  isLogin: false,
+  is_login: false,
   user_phone:'',
-  basic_info:{}
+  user_avatar:'{}'
 };
 export default state

@@ -23,25 +23,9 @@ window.gApp.$errMsg = function (ErrId) {
   return ErrorObj['Error.' + ErrId]
 };
 
-// 进行自动登录校验
-import AuthService from './service/auth'
-if(localStorage.getItem('token')!=null){
-  AuthService.autoLogin().then(res=>{
-    window.gApp.$message({
-      message: 'token校验通过，自动登录成功！',
-      type: 'success'
-    });
-    // console.log(res)
-    window.gApp.$store.dispatch('setUser',res);
-  }).catch(error=>{
-    window.gApp.$message.error(error);
-    window.gApp.$store.dispatch('clearUser');
-  })
-}
-
 // 全局路由守卫
 router.beforeEach((to, from, next) => {
-  if (to.meta.auth && !store.state.isLogin) {
+  if (to.meta.auth && !store.state.is_login) {
     next({
       path: '/',
     });

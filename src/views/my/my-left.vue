@@ -12,6 +12,7 @@
     height: 120px;
     border-radius: 50%;
     overflow: hidden;
+    zoom: .66;
   }
   .my-left .presonal-info{
     margin-top: 16px;
@@ -46,8 +47,8 @@
 <template>
   <div class="my-left">
     <div class="personal-card">
-      <!--<div class="avatar-container" v-html="basicInfo.avatarsDOM">-->
-      <!--</div>-->
+      <div class="avatar-container" v-html="JSON.parse(user_avatar).avatarsDOM">
+      </div>
       <div class="presonal-info">
         <a href="">zhangtao25</a>
       </div>
@@ -55,7 +56,10 @@
         <span>上海&nbsp;|&nbsp;设计爱好者</span>
       </div>
       <div class="btn-area">
-        <el-button style="width: 100%;padding: 10px 20px" type="primary">开始创作</el-button>
+        <el-button
+          style="width: 100%;padding: 10px 20px"
+          type="primary"
+          @click="onClickUpload">上传笔记</el-button>
       </div>
     </div>
     <div class="personal-menu">
@@ -74,6 +78,7 @@
   </div>
 </template>
 <script>
+  import UserService from './../../service/user'
   import {mapGetters} from 'vuex'
   export default {
     data(){
@@ -85,17 +90,22 @@
           {name:'我的收藏',path:'/collections',icon:'icon-collections'},
           {name:'我的统计',path:'/statistics',icon:'icon-statistics'},
           {name:'资料与账号',path:'/setting',icon:'icon-setting'},
-        ],
+        ]
       }
+    },
+    mounted(){
     },
     methods:{
       onSelectMenu(index){
         console.log(index)
         this.$router.push({path:'/my'+this.menuArr[index]['path']})
+      },
+      onClickUpload(){
+        this.$router.push({path:'/upload/normal'})
       }
     },
     computed:{
-      ...mapGetters(['basicInfo'])
+      ...mapGetters(['user_avatar'])
     }
   }
 </script>

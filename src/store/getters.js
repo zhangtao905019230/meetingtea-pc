@@ -2,8 +2,11 @@ const getter = {
   user_phone(state){
     return state.user_phone;
   },
-  basic_info(state){
-    return state.basic_info;
+  token(state){
+    return state.token;
+  },
+  user_avatar(state){
+    return state.user_avatar
   }
 }
 export default getter

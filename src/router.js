@@ -10,6 +10,10 @@ export default new Router({
       redirect:'/explorer'
     },
     {
+      path:'/vuex',
+      component:()=> import('./views/vuex')
+    },
+    {
       path:'/explorer',
       component:()=> import('./views/explorer')
     },

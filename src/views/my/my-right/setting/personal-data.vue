@@ -1,3 +1,84 @@
+<template>
+  <div class="personal-data">
+    <div class="user-avatars">
+      <div class="wrap" @click="openUploadAvatarsDialog">
+        <span>修改头像</span>
+        <div v-html="user_avatar.avatarsDOM"></div>
+      </div>
+      <upload-avatars-dialog
+        :avatarsParam="user_avatar.avatarsParam"
+        @update="updateData"
+        ref="uploadAvatarsDialog"></upload-avatars-dialog>
+    </div>
+    <p style="text-align: center;line-height: 2">zhangtao25</p>
+
+    <el-collapse v-model="activeNames">
+      <el-collapse-item title="基本信息" name="basicInfo">
+        <basic-info :basic-info-rule-form="basicInfoRuleForm"></basic-info>
+      </el-collapse-item>
+    </el-collapse>
+
+  </div>
+</template>
+<script>
+  import UploadAvatarsDialog from './personal-data/upload-avatars-dialog'
+  import BasicInfo from './personal-data/basic-info'
+  import UserService from './../../../../service/user'
+
+  export default {
+    components:{
+      'upload-avatars-dialog': UploadAvatarsDialog,
+      'basic-info': BasicInfo
+    },
+    data(){
+      return{
+        avatarsDOM:'',
+        avatarsParam:'',
+        activeNames:'basicInfo',
+        user_avatar:{
+          avatarsDOM:'',
+          avatarsParam:{}
+        },
+        basicInfoRuleForm:{
+          'user_nikename':'',
+          'user_address':[],
+          'user_email': '',
+          'user_sex': 0,
+          'user_introduce': '',
+          'user_birthday': ''
+        }
+      }
+    },
+    mounted(){
+      this.init()
+    },
+    methods:{
+      init(){
+        UserService.getUserInfo().then(res=>{
+          this.user_avatar = {
+            avatarsDOM:JSON.parse(res.user_avatar).avatarsDOM,
+            avatarsParam:JSON.parse(res.user_avatar).avatarsParam
+          };
+          this.basicInfoRuleForm={
+            'user_nikename':res.user_nikename,
+            'user_address':res.user_address,
+            'user_email': res.user_email,
+            'user_sex': res.user_sex,
+            'user_introduce': res.user_introduce,
+            'user_birthday': res.user_birthday
+          }
+        })
+      },
+      openUploadAvatarsDialog(){
+        this.$refs.uploadAvatarsDialog.openDialog();
+      },
+      updateData(val){
+        this.user_avatar = val.user_avatar;
+      }
+    }
+  }
+</script>
+
 <style scoped>
   .personal-data img {
   }
@@ -30,56 +111,3 @@
     line-height: 120px;
   }
 </style>
-<template>
-  <div class="personal-data">
-    <div class="user-avatars">
-      <div class="wrap" @click="openUploadAvatarsDialog">
-        <span>修改头像</span>
-        <div v-html="avatarsDOM"></div>
-      </div>
-      <upload-avatars-dialog :avatarsParam="avatarsParam" @giveData="getCropperData" ref="uploadAvatarsDialog"></upload-avatars-dialog>
-    </div>
-    <p style="text-align: center;line-height: 2">zhangtao25</p>
-
-    <el-collapse v-model="activeNames">
-      <el-collapse-item title="基本信息" name="basicInfo">
-        <basic-info></basic-info>
-      </el-collapse-item>
-    </el-collapse>
-
-  </div>
-</template>
-<script>
-  import UploadAvatarsDialog from './personal-data/upload-avatars-dialog'
-  import BasicInfo from './personal-data/basic-info'
-
-  import axios from 'axios'
-  export default {
-    components:{
-      'upload-avatars-dialog': UploadAvatarsDialog,
-      'basic-info': BasicInfo
-    },
-    data(){
-      return{
-        avatarsDOM:'',
-        avatarsParam:'',
-        activeNames:'basicInfo'
-      }
-    },
-    mounted(){
-      // axios.get('/api/user/avatars').then(res=>{
-      //   console.log(res.data)
-      //   this.avatarsDOM = res.data.avatarsDOM
-      //   this.avatarsParam = res.data.avatarsParam
-      // })
-    },
-    methods:{
-      openUploadAvatarsDialog(){
-        this.$refs.uploadAvatarsDialog.openDialog();
-      },
-      getCropperData(val){
-        this.avatarsDOM = val
-      }
-    }
-  }
-</script>

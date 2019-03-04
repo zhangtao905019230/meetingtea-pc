@@ -1,22 +1,3 @@
-<style scoped>
-  .box{
-    width: 300px;
-    height: 300px;
-  }
-  .cropper-wrap{
-    display: flex;
-  }
-  .right{
-    margin-left: 14px;
-    display: block;
-  }
-  .right p{
-    text-align: center;margin-top: 14px
-  }
-  .small{
-    width: 120px;height: 120px;overflow: hidden;border-radius: 50%
-  }
-</style>
 <template>
   <el-dialog
     title="上传头像"
@@ -79,24 +60,46 @@
           }
         });
         setTimeout(()=>{
-          this.$image.cropper('setData',JSON.parse(this.avatarsParam))
+          this.$image.cropper('setData',this.avatarsParam)
           console.log(this.avatarsParam)
-        },500)
+        },100)
       },
       openDialog(){
         this.dialogVisible = true;
       },
       uploadAvatars(){
         let avatarsDOM = $('.small').html()
-        let avatarsParam = this.$image.cropper('getData', true)
-
-        axios.get('/api/user/avatars/upload',{params:{avatarsDOM,avatarsParam}}).then(res=>{
+        let avatarsParam = this.$image.cropper('getData', true);
+        let req = {
+          user_avatar:{
+            avatarsDOM,avatarsParam
+          }
+        }
+        axios.get('/api/user/avatars/upload',{params:req}).then(res=>{
           console.log(res)
+          this.$emit('update',req)
         })
-
         this.dialogVisible = false;
-        this.$emit('giveData',avatarsDOM)
       }
     }
   }
 </script>
+<style scoped>
+  .box{
+    width: 300px;
+    height: 300px;
+  }
+  .cropper-wrap{
+    display: flex;
+  }
+  .right{
+    margin-left: 14px;
+    display: block;
+  }
+  .right p{
+    text-align: center;margin-top: 14px
+  }
+  .small{
+    width: 120px;height: 120px;overflow: hidden;border-radius: 50%
+  }
+</style>
