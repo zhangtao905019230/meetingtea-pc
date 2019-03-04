@@ -85,12 +85,11 @@
       initRuleForm(){
         UserService.getUserInfo().then(res=>{
           this.ruleForm = {
-            phoneNumber: res.phoneNumber,
-            email: res.email,
-            sex: res.sex,
-            hometown: res.hometown,
-            nowLiving: res.nowLiving,
-            signature: res.signature
+            email: res.user_email,
+            sex: res.user_sex,
+            hometown: null,
+            nowLiving: null,
+            signature: res.user_intro
           }
         })
       }

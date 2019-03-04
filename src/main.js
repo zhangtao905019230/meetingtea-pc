@@ -31,7 +31,8 @@ if(localStorage.getItem('token')!=null){
       message: 'token校验通过，自动登录成功！',
       type: 'success'
     });
-    window.gApp.$store.dispatch('setUser');
+    // console.log(res)
+    window.gApp.$store.dispatch('setUser',res);
   }).catch(error=>{
     window.gApp.$message.error(error);
     window.gApp.$store.dispatch('clearUser');

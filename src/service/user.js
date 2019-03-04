@@ -6,7 +6,7 @@ axios.interceptors.request.use(
   config => {
     if (window.gApp.$store.state.token) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
       config.headers.Authorization = JSON.stringify({
-        phoneNumber:window.gApp.$store.state.phoneNumber,
+        user_phone:window.gApp.$store.state.user_phone,
         token:window.gApp.$store.state.token
       });
     }

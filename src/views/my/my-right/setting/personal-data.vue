@@ -52,7 +52,7 @@
 <script>
   import UploadAvatarsDialog from './personal-data/upload-avatars-dialog'
   import BasicInfo from './personal-data/basic-info'
-  // import axios from 'axios'
+
   import axios from 'axios'
   export default {
     components:{
@@ -67,11 +67,11 @@
       }
     },
     mounted(){
-      axios.get('/api/user/avatars').then(res=>{
-        console.log(res.data)
-        this.avatarsDOM = res.data.avatarsDOM
-        this.avatarsParam = res.data.avatarsParam
-      })
+      // axios.get('/api/user/avatars').then(res=>{
+      //   console.log(res.data)
+      //   this.avatarsDOM = res.data.avatarsDOM
+      //   this.avatarsParam = res.data.avatarsParam
+      // })
     },
     methods:{
       openUploadAvatarsDialog(){

@@ -7,8 +7,11 @@
     background-color: white;
     border-radius: 4px;
   }
-  .my-left .avatar-container img{
+  .my-left .avatar-container{
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
+    overflow: hidden;
   }
   .my-left .presonal-info{
     margin-top: 16px;
@@ -43,9 +46,8 @@
 <template>
   <div class="my-left">
     <div class="personal-card">
-      <div class="avatar-container">
-        <img :src="src" alt="">
-      </div>
+      <!--<div class="avatar-container" v-html="basicInfo.avatarsDOM">-->
+      <!--</div>-->
       <div class="presonal-info">
         <a href="">zhangtao25</a>
       </div>
@@ -72,6 +74,7 @@
   </div>
 </template>
 <script>
+  import {mapGetters} from 'vuex'
   export default {
     data(){
       return{
@@ -90,6 +93,9 @@
         console.log(index)
         this.$router.push({path:'/my'+this.menuArr[index]['path']})
       }
+    },
+    computed:{
+      ...mapGetters(['basicInfo'])
     }
   }
 </script>

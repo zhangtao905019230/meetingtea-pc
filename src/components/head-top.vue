@@ -70,11 +70,11 @@
         </li>
       </ul>
       <div class="right">
-        <span @click="onClickLogin" v-if="!phoneNumber">登录</span>
+        <span @click="onClickLogin" v-if="!user_phone">登录</span>
         <login ref="login" ></login>
-        <el-dropdown @command="handleCommand" v-if="phoneNumber">
+        <el-dropdown @command="handleCommand" v-if="user_phone">
           <span class="el-dropdown-link">
-            {{phoneNumber}}<i class="el-icon-arrow-down el-icon--right"></i>
+            {{user_phone}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="personalCenter">个人中心</el-dropdown-item>
@@ -134,7 +134,7 @@
       }
     },
     computed:{
-      ...mapGetters(['phoneNumber'])
+      ...mapGetters(['user_phone'])
     }
   }
 </script>

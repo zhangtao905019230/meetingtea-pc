@@ -18,6 +18,20 @@ export default new Router({
       component:()=> import('./views/discovery')
     },
     {
+      path:'/upload',
+      component:()=> import('./views/upload'),
+      children:[
+        {
+          path:'normal',
+          component: () => import('./views/upload/normal'),
+        },
+        {
+          path:'video',
+          component: () => import('./views/upload/video'),
+        },
+      ]
+    },
+    {
       path:'/my',
       component: () => import('./views/my'),
       meta:{auth:true},
