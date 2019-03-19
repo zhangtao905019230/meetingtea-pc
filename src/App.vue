@@ -8,6 +8,7 @@
 </style>
 <template>
   <div id="app">
+    <p>dskjhckdsjhk</p>
     <head-top></head-top>
     <router-view/>
   </div>
