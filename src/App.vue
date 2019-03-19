@@ -9,6 +9,7 @@
 <template>
   <div id="app">
     <p>dskjhckdsjhk</p>
+    <p>dsfsdf</p>
     <head-top></head-top>
     <router-view/>
   </div>
